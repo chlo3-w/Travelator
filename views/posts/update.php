@@ -5,13 +5,13 @@
     <h2>Update Post</h2>
 <div class="form-group">
     <p>
-        <input class="form-control form-control-lg" type="text" name="title" value="<?= $post->title; ?>">
+        <input class="form-control form-control-lg" type="text" name="title" value="<?= $posts->title; ?>">
         <label>Title</label>
     </p>
 </div>
     <div class="form-group">
      <p>
-    <textarea class="form-control" rows="3" type="text" name="content" value="<?= $post->content; ?>"></textarea>
+    <textarea class="form-control" rows="10" type="text" name="content" value=""><?= $posts->content; ?></textarea>
     <label>Post content</label>
     </p>
   </div>

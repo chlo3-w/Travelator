@@ -13,6 +13,10 @@
         <label>Content</label>
     </p>
     -->
+    <p>
+        <input class="form-control form-control-sm" type="text" name="location" required>
+        <label>Location</label>
+    </p>
     <div class="form-group">
      <p>
     <textarea class="form-control" type="text" rows="3" name="content" required></textarea>
@@ -20,13 +24,12 @@
     </p>
   </div>
             
- <!-- <input type="hidden" 
+<input type="hidden" 
 	   name="MAX_FILE_SIZE" 
          value="10000000"
          />
 
-  <input type="file" name="myUploader" class="" required />
--->  
+  <input type="file" name="myUploader" class=""/>
 <p>
     <input class="btn btn-primary mb-2" type="submit" value="Create post">
   </p>
