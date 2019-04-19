@@ -1,6 +1,6 @@
-<?php 
-    
-    class Authentication {
+<?php
+
+class Authentication {
 
     protected $db_connection;
 
@@ -25,7 +25,7 @@
         //Password verify doc : http://php.net/manual/en/function.password-verify.php
         //Here, as the blog won't have a login, we won't use password_hash, only password verify to get the credentials from the database
         $queryRequest = $query->fetch(\PDO::FETCH_OBJ);
-        if($queryRequest) {
+        if ($queryRequest) {
             return password_verify($password, $queryRequest->password);
         }
     }
@@ -37,7 +37,7 @@
      */
     public function setAuthentication($password) {
         $query = $this->db_connection->prepare('UPDATE users SET password=:password LIMIT 1');
-        $newPassword = password_hash($password , PASSWORD_DEFAULT);
+        $newPassword = password_hash($password, PASSWORD_DEFAULT);
         $query->bindParam(':password', $newPassword);
         return $query->execute();
     }

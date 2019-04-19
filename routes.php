@@ -1,5 +1,6 @@
 <?php
-  function call($controller, $action) {
+
+function call($controller, $action) {
     // require the file that matches the controller name
     require_once('controllers/' . $controller . '_controller.php');
 
@@ -20,7 +21,7 @@
     }
     // call the requested action
     $controller->{ $action }();
-  }
+}
 
 // for validation we list the allowed controllers and their actions
 // Add an entry for each new controller and its actions
@@ -29,16 +30,17 @@ $controllers = array('pages' => ['home', 'error', 'login'],
                     'controllerXXX' => ['actionYYY', 'actionZZZ'],
                     );
 
-  // check that the requested controller and action are both allowed
-  // if someone tries to access something else they will be redirected 
-  // to the error action of the pages controller
-  if (array_key_exists($controller, $controllers)) {
+// check that the requested controller and action are both allowed
+// if someone tries to access something else they will be redirected 
+// to the error action of the pages controller
+if (array_key_exists($controller, $controllers)) {
     if (in_array($action, $controllers[$controller])) {
-      call($controller, $action);
+        call($controller, $action);
     } else {
-      call('pages', 'error');
+        call('pages', 'error');
     }
-  } else {
+} else {
     call('pages', 'error');
-  }
-  ?>
+}
+
+?>
