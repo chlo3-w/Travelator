@@ -21,6 +21,9 @@
     <li class="nav-item">
       <a class="nav-link" href="?controller=post&action=create">Add new post</a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link" href="?controller=pages&action=login">Login</a>
+    </li>
   </ul>
 </nav>
 <br>
