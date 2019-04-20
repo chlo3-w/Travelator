@@ -40,7 +40,7 @@ class Post {
             return new Post($post['id'], $post['title'], $post['content'], $post['img'], $post['location']);
         } else {
             //replace with a more meaningful exception
-            throw new Exception("No post returned, click <a href='/Blog2/index.php'>here</a> to go back to the homepage.");
+            throw new Exception("No post returned, click <a href='/Travelator/index.php'>here</a> to go back to the homepage.");
         }
     }
 

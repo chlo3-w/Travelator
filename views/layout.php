@@ -13,7 +13,7 @@
         <nav class="navbar navbar-expand-sm bg-light justify-content-center" style="margin-top: -35px;">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/Blog2/index.php">Home</a>
+                    <a class="nav-link" href="/Travelator/index.php">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="?controller=post&action=readAll">Posts</a>
