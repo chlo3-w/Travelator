@@ -8,11 +8,6 @@
         <label>Title</label>
     </p>
 </div>
-      <!--  <p>
-        <input class="form-control" type="text" rows="3" name="content" required>
-        <label>Content</label>
-    </p>
-    -->
     <p>
         <input class="form-control form-control-sm" type="text" name="location" required>
         <label>Location</label>
@@ -30,7 +25,7 @@
          />
 
   <input type="file" name="myUploader" class=""/>
-<p>
-    <input class="btn btn-primary mb-2" type="submit" value="Create post">
+  <p><br>
+    <input class="btn btn-info" type="submit" value="Create post">
   </p>
 </form>

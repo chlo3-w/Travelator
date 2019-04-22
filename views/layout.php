@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<?php 
+session_start();
+?>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" media="all">
 <link rel="stylesheet" href="views/css/stylesheet.css">
@@ -13,7 +16,7 @@
 <nav class="navbar navbar-expand-sm bg-light justify-content-center" style="margin-top: -35px;">
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link" href="/Blog2/index.php">Home</a>
+      <a class="nav-link" href="index.php">Home</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="?controller=post&action=readAll">Posts</a>
@@ -24,11 +27,15 @@
     <li class="nav-item">
       <a class="nav-link" href="?controller=pages&action=login">Login</a>
     </li>
+    <?php if(isset($_SESSION['username'])){
+        echo "<li class='nav-item'>";
+        echo "<a class='nav-link' href='?controller=pages&action=logout'>Logout</a></li>";
+    }?>
   </ul>
 </nav>
 <br>
 
-<div class="container-fluid">
+<div id="layout" class="container-fluid">
 <div class="col-sm-12 text-center">  
 <?php require_once('routes.php'); ?>
 </div>
