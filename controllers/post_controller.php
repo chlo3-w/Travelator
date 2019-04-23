@@ -37,26 +37,23 @@ class PostController {
     }
 
     public function update() {
-        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-            if (!isset($_GET['id']))
-                return call('pages', 'error');
-
-            // we use the given id to get the correct product
-            $posts = Post::find($_GET['id']);
-            require_once('views/posts/update.php');
+      if($_SERVER['REQUEST_METHOD'] == 'GET'){
+          if (!isset($_GET['id']))
+          return call('pages', 'error');
+        // we use the given id to get the correct product
+        $posts = Post::find($_GET['id']);
+        require_once('views/posts/update.php');
         }
         else {
             $id = $_GET['id'];
-            Post::update($id);
-
+            Post::update($id);          
             $posts = Post::all();
             require_once('views/posts/readAll.php');
-        }
+      }
     }
 
     public function delete() {
         Post::remove($_GET['id']);
-
         $posts = Post::all();
         require_once('views/posts/readAll.php');
     }

@@ -21,9 +21,10 @@ li {
    
        
 footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
+      background-color: lightsteelblue; 
+      color:white;
+      padding: 15px 0 8px 0; 
+      height:60px;
 }
 
 a {
