@@ -1,10 +1,11 @@
-<!DOCTYPE html>
+<!DOCTYPE html>            
 <html>
     <head>
         <meta charset="UTF-8">
         <title>Travel Blog</title>
     </head>
     <body>
+       
         <?php
         require_once('connection.php');
 
@@ -17,6 +18,7 @@
         }
 
         require_once('views/layout.php');
+        
         ?>
     </body>
 </html>
