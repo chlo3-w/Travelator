@@ -1,16 +1,32 @@
-function gettitle()
-{
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function (){
-        if (this.readyState == 4 && this.status == 200){
-           document.getElementById("demo").innerHTML=this;
-
-        }
-           
-        };
-        
-
-};
+//function gettitle()
+//{
+//    var xhttp = new XMLHttpRequest();
+//    xhttp.onreadystatechange = function () {
+//        if (this.readyState == 4 && this.status == 200) {
+//            document.getElementById("demo").innerHTML = this;
+//
+//        }
+//
+//    };
+//
+//
+//}
+//;
+//function getLocation(location)
+//{
+//    var xmlhttp = new XMLHttpRequest();
+//
+//    xmlhttp.onreadystatechange = function () {
+//        if (this.readyState === 4 && this.status === 200) {
+//
+//            myObj = JSON.parse(this.responseText);
+//            getContent(myObj);
+//        }
+//    };
+//    xmlhttp.open("GET", "index.php?controller=post&action=readLocation&location" + location, true);
+//    xmlhttp.send();
+//}
+//
 
 
 //
