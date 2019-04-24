@@ -25,8 +25,8 @@
         </div>
     
 
-
-    <!--    <div>
+<!--
+        <div>
             <img src="views/images/world_map_watercolour.jpg" alt="world map" usemap="#Map" />
             <map name="Map" id="Map" class="Map">
                 <area alt="South America" title="South America" href="?controller=post&action=readLocation&location=South America" shape="poly" coords="51,93,72,84,92,85,92,101,93,121,78,140,51,142" />
