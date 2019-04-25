@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 20, 2019 at 05:54 PM
--- Server version: 10.1.26-MariaDB
--- PHP Version: 7.0.23
+-- Generation Time: Apr 25, 2019 at 09:02 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.2.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -20,8 +20,9 @@ SET time_zone = "+00:00";
 
 --
 -- Database: `TravelBlog`
-CREATE Database IF NOT EXISTS `TravelBlog` DEFAULT CHARACTER SET latin1 COLLATE latin1_general_ci;
-USE `TravelBlog`;
+CREATE Database `TravelBlog`;
+use Database `TravelBlog`;
+--
 
 -- --------------------------------------------------------
 
@@ -50,11 +51,26 @@ INSERT INTO `category` (`category_id`, `category`) VALUES
 --
 
 CREATE TABLE `comments` (
-  `comment_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `comment` varchar(500) COLLATE latin1_general_ci NOT NULL,
-  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `ID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `postID` int(11) NOT NULL,
+  `commentBody` varchar(250) COLLATE latin1_general_ci NOT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `parentID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+--
+-- Dumping data for table `comments`
+--
+
+INSERT INTO `comments` (`ID`, `userID`, `postID`, `commentBody`, `createdAt`, `parentID`) VALUES
+(1, 1, 3, 'Great post!', '2019-04-25 18:53:54', NULL),
+(2, 2, 1, 'Sounds amazing, can\'t wait to visit!', '2019-04-25 18:54:26', NULL),
+(3, 3, 2, 'I\'m not sure this is for me really :(', '2019-04-25 18:54:58', NULL),
+(4, 1, 3, 'Another comment', '2019-04-25 18:55:16', NULL),
+(5, 2, 3, 'Another comment', '2019-04-25 18:55:58', NULL),
+(6, 3, 1, 'ANother comment', '2019-04-25 18:56:22', NULL),
+(7, 4, 2, 'Another comment', '2019-04-25 18:57:13', NULL);
 
 -- --------------------------------------------------------
 
@@ -127,7 +143,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `first_name`, `last_name`, `img`, `author`) VALUES
-(1, 'admin', 'admin', 'admin@admin.com', 'admin', 'admin', '', NULL);
+(1, 'admin', 'admin', 'admin@admin.com', 'admin', 'admin', '', NULL),
+(2, 'Sasha', 'travelator', 'sasha@travelator.com', 'Sasha', 'Massan', '', NULL),
+(3, 'Sheila', 'Travelator', 'sheila@travelator.com', 'Sheila', 'Kerry', '', NULL),
+(4, 'Cheryl', 'Travelator', 'cheryl@travelator.com', 'Cheryl', 'Horrigan', '', NULL);
 
 --
 -- Indexes for dumped tables
@@ -143,8 +162,9 @@ ALTER TABLE `category`
 -- Indexes for table `comments`
 --
 ALTER TABLE `comments`
-  ADD PRIMARY KEY (`comment_id`),
-  ADD KEY `fk_comm_user_id` (`user_id`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `userID` (`userID`),
+  ADD KEY `postID` (`postID`);
 
 --
 -- Indexes for table `location`
@@ -187,7 +207,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -199,7 +219,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
@@ -209,7 +229,8 @@ ALTER TABLE `users`
 -- Constraints for table `comments`
 --
 ALTER TABLE `comments`
-  ADD CONSTRAINT `fk_comm_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`userID`) REFERENCES `users` (`user_id`),
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`postID`) REFERENCES `posts` (`id`);
 
 --
 -- Constraints for table `posts`
