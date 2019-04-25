@@ -133,4 +133,15 @@ class Post {
         $req->execute(array('id' => $id));
     }
 
+    public static function findLocation($location) {
+        $db = Db::getInstance();
+        $req = $db->prepare('call searchLocation(:location)');
+        $req->execute(['location' => $location]);
+        foreach ($req->fetchAll() as $post) {
+            //make sure that you have these variable in the f
+            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['img'], $post['city']);
+        }
+        return $list;
+    }
+
 }
