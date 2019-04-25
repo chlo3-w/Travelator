@@ -1,16 +1,10 @@
 <?php
 class CommentsController {
     
-    public function displayAll() {
-        $fullName = 'Sasha Massan';
-        $avatar = '../images/Sasha.jpeg';
-        $comment = 'Great Post!';
-        
-        //$allComments= Comment::displayAll;
-        
-        $allComments = []
-        
-        require_once('../views/comments/display.php');
+    public function display() {
+        $newComment = new Comment;
+        $comment = Comment::display();
+        require_once('../views/comments/displayOne.php');
     }
     
     public function getReplies() {
