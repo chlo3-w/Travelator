@@ -1,4 +1,4 @@
 <?php
 class SearchController{
-    public function search_location
+    public function search_location();
 }
