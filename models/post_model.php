@@ -9,12 +9,13 @@ class Post {
     public $img;
     public $location;
 
-    public function __construct($id, $title, $content, $img, $location) {
+    public function __construct($id, $title, $content, $img) {
+//         public function __construct($id, $title, $content, $img, $location) {
         $this->id = $id;
         $this->title = $title;
         $this->content = $content;
         $this->img = $img;
-        $this->location = $location;
+//        $this->location = $location;
     }
 
     public static function all() {
@@ -131,6 +132,17 @@ class Post {
         $req = $db->prepare('delete FROM posts WHERE id = :id');
         // the query was prepared, now replace :id with the actual $id value
         $req->execute(array('id' => $id));
+    }
+
+    public static function findLocation($location) {
+        $db = Db::getInstance();
+        $req = $db->prepare('call searchLocation(:location)');
+        $req->execute(['location' => $location]);
+        foreach ($req->fetchAll() as $post) {
+            //make sure that you have these variable in the f
+            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['img'], $post['city']);
+        }
+        return $list;
     }
 
 }

@@ -4,7 +4,9 @@
 class PagesController {
 
     public function home() {
-      //example data to use in the home page
+       
+        require_once('models/pages.php');
+    $home = Pages::readHomeData();
       require_once('views/pages/home.php');
     }
 

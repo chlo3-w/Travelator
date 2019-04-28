@@ -64,7 +64,22 @@ class PostController {
         $posts = Post::all();
         require_once('views/posts/readAll.php');
     }
+    
+    
+    public function readLocation() {
+        if (!isset($_GET['location']))
+            return call('pages', 'error');
+        try {
+            // we use the given id to get the correct post
+            $post = Post::findLocation($_GET['location']);
+            require_once('views/posts/readLocation.php');
+        } catch (Exception $ex) {
+            return call('pages', 'error');
+        }
+    }
 
+    
+    
 }
 ?>
 
