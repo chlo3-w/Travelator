@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 25, 2019 at 09:02 PM
+-- Generation Time: Apr 28, 2019 at 11:50 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.13
 
@@ -21,7 +21,7 @@ SET time_zone = "+00:00";
 --
 -- Database: `TravelBlog`
 CREATE Database `TravelBlog`;
-use Database `TravelBlog`;
+use `TravelBlog`;
 --
 
 -- --------------------------------------------------------
@@ -79,10 +79,10 @@ INSERT INTO `comments` (`ID`, `userID`, `postID`, `commentBody`, `createdAt`, `p
 --
 
 CREATE TABLE `location` (
-  `location_id` int(11) NOT NULL,
-  `city` varchar(30) COLLATE latin1_general_ci DEFAULT NULL,
-  `country` varchar(30) COLLATE latin1_general_ci DEFAULT NULL,
-  `continent` varchar(30) COLLATE latin1_general_ci DEFAULT NULL
+  `ID` int(11) NOT NULL,
+  `city` varchar(50) COLLATE latin1_general_ci DEFAULT NULL,
+  `country` varchar(50) COLLATE latin1_general_ci DEFAULT NULL,
+  `continent` varchar(50) COLLATE latin1_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- --------------------------------------------------------
@@ -112,13 +112,23 @@ INSERT INTO `posts` (`id`, `title`, `content`, `create_date`, `user_id`, `img`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `post_category`
+-- Table structure for table `posts_category`
 --
 
-CREATE TABLE `post_category` (
-  `post_id` int(11) DEFAULT NULL,
-  `category_id` int(11) DEFAULT NULL,
-  `location_id` int(5) DEFAULT NULL
+CREATE TABLE `posts_category` (
+  `postId` int(11) DEFAULT NULL,
+  `categoryId` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts_location`
+--
+
+CREATE TABLE `posts_location` (
+  `postId` int(11) DEFAULT NULL,
+  `locationId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 -- --------------------------------------------------------
@@ -134,19 +144,19 @@ CREATE TABLE `users` (
   `email` varchar(100) COLLATE latin1_general_ci NOT NULL,
   `first_name` varchar(50) COLLATE latin1_general_ci NOT NULL,
   `last_name` varchar(50) COLLATE latin1_general_ci NOT NULL,
-  `img` mediumblob NOT NULL,
-  `author` tinyint(1) DEFAULT NULL
+  `author` tinyint(1) DEFAULT NULL,
+  `avatar` varchar(50) COLLATE latin1_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `first_name`, `last_name`, `img`, `author`) VALUES
-(1, 'admin', 'admin', 'admin@admin.com', 'admin', 'admin', '', NULL),
-(2, 'Sasha', 'travelator', 'sasha@travelator.com', 'Sasha', 'Massan', '', NULL),
-(3, 'Sheila', 'Travelator', 'sheila@travelator.com', 'Sheila', 'Kerry', '', NULL),
-(4, 'Cheryl', 'Travelator', 'cheryl@travelator.com', 'Cheryl', 'Horrigan', '', NULL);
+INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `first_name`, `last_name`, `author`, `avatar`) VALUES
+(1, 'admin', 'admin', 'admin@admin.com', 'admin', 'admin', NULL, NULL),
+(2, 'Sasha', 'Travelator', 'sasha@travelator.com', 'Sasha', 'Massan', NULL, 'views/images/userProfiles/Sasha.jpeg'),
+(3, 'Sheila', 'Travelator', 'sheila@travelator.com', 'Sheila', 'Kerry', NULL, 'views/images/userProfiles/default.jpeg'),
+(4, 'Cheryl', 'Travelator', 'cheryl@travelator.com', 'Cheryl', 'Horrigan', NULL, 'views/images/userProfiles/default.jpeg');
 
 --
 -- Indexes for dumped tables
@@ -170,7 +180,7 @@ ALTER TABLE `comments`
 -- Indexes for table `location`
 --
 ALTER TABLE `location`
-  ADD PRIMARY KEY (`location_id`);
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `posts`
@@ -180,12 +190,18 @@ ALTER TABLE `posts`
   ADD KEY `fk_user_id` (`user_id`);
 
 --
--- Indexes for table `post_category`
+-- Indexes for table `posts_category`
 --
-ALTER TABLE `post_category`
-  ADD KEY `fk_category_id` (`category_id`),
-  ADD KEY `fk_post_id` (`post_id`),
-  ADD KEY `fk_location_id` (`location_id`);
+ALTER TABLE `posts_category`
+  ADD KEY `postId` (`postId`),
+  ADD KEY `categoryId` (`categoryId`);
+
+--
+-- Indexes for table `posts_location`
+--
+ALTER TABLE `posts_location`
+  ADD KEY `postId` (`postId`),
+  ADD KEY `locationId` (`locationId`);
 
 --
 -- Indexes for table `users`
@@ -208,6 +224,12 @@ ALTER TABLE `category`
 --
 ALTER TABLE `comments`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `location`
+--
+ALTER TABLE `location`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `posts`
@@ -239,13 +261,18 @@ ALTER TABLE `posts`
   ADD CONSTRAINT `fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`);
 
 --
--- Constraints for table `post_category`
+-- Constraints for table `posts_category`
 --
-ALTER TABLE `post_category`
-  ADD CONSTRAINT `fk_category_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`),
-  ADD CONSTRAINT `fk_location_id` FOREIGN KEY (`location_id`) REFERENCES `location` (`location_id`),
-  ADD CONSTRAINT `fk_post_id` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`),
-  ADD CONSTRAINT `post_category_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `Category` (`category_id`);
+ALTER TABLE `posts_category`
+  ADD CONSTRAINT `posts_category_ibfk_1` FOREIGN KEY (`postId`) REFERENCES `posts` (`id`),
+  ADD CONSTRAINT `posts_category_ibfk_2` FOREIGN KEY (`categoryId`) REFERENCES `category` (`category_id`);
+
+--
+-- Constraints for table `posts_location`
+--
+ALTER TABLE `posts_location`
+  ADD CONSTRAINT `posts_location_ibfk_1` FOREIGN KEY (`postId`) REFERENCES `posts` (`id`),
+  ADD CONSTRAINT `posts_location_ibfk_2` FOREIGN KEY (`locationId`) REFERENCES `location` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

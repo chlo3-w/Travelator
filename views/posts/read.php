@@ -3,6 +3,7 @@
 <p>Title: <?php echo $post->title; ?></p>
 <p>Location: <?php echo $post->location; ?></p>
 <p>Content: <?php echo $post->content; ?></p>
+
 <p>
     <?php
     $file = 'views/images/' . $post->location . '.jpeg';
