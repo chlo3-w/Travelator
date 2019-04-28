@@ -9,12 +9,13 @@ class Post {
     public $img;
     public $location;
 
-    public function __construct($id, $title, $content, $img, $location) {
+    public function __construct($id, $title, $content, $img) {
+//         public function __construct($id, $title, $content, $img, $location) {
         $this->id = $id;
         $this->title = $title;
         $this->content = $content;
         $this->img = $img;
-        $this->location = $location;
+//        $this->location = $location;
     }
 
     public static function all() {

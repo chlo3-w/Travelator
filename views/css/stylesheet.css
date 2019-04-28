@@ -31,18 +31,34 @@ a {
     color: palevioletred;
 }
 
-.carousel-inner{
-    max-height: 350px;
+
+#worldMap {
+    fill: #F4C3C2 !important;
 }
 
-#countries *.on {
- fill: red;
+path:hover, circle:hover {
+    stroke: #002868 !important;
+    stroke-width:2px;
+    stroke-linejoin: round;
+    fill: #002868 !important;
+    cursor: pointer;
 }
-/*.home-map {
-    min-width: 100%;
+#info-box {
+    display: none;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    background-color: #ffffff;
+    border: 2px solid #BF0A30;
+    border-radius: 5px;
+    padding: 5px;
+    font-family: arial;
 }
-.home-map-area{
-    outline: 0;
+
+/*
+.countries:hover {
+    fill:red;
 }*/
 
 .home-categories{
