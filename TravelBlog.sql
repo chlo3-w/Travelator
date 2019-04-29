@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 29, 2019 at 12:09 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.2.13
+-- Generation Time: Apr 29, 2019 at 09:06 PM
+-- Server version: 10.1.26-MariaDB
+-- PHP Version: 7.0.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -20,9 +20,9 @@ SET time_zone = "+00:00";
 
 --
 -- Database: `TravelBlog`
-CREATE Database `TravelBlog`;
-use `TravelBlog`;
---
+    CREATE Database `TravelBlog`;
+    USE `TravelBlog`;
+    
 
 -- --------------------------------------------------------
 
@@ -85,6 +85,23 @@ CREATE TABLE `location` (
   `continent` varchar(50) COLLATE latin1_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
+--
+-- Dumping data for table `location`
+--
+
+INSERT INTO `location` (`ID`, `city`, `country`, `continent`) VALUES
+(1, '', '', 'Europe'),
+(2, '', '', 'North America'),
+(3, '', '', 'South America'),
+(4, '', '', 'Asia'),
+(5, '', '', 'Africa'),
+(6, '', '', 'Australia'),
+(7, '', '', 'Antartica'),
+(8, 'Prague', 'Czech Republic', 'Europe'),
+(9, 'New York', 'USA', 'North America'),
+(10, 'Lagos', 'Nigeria', 'Africa'),
+(11, NULL, 'Australia', 'Australia');
+
 -- --------------------------------------------------------
 
 --
@@ -130,6 +147,15 @@ CREATE TABLE `posts_location` (
   `postId` int(11) DEFAULT NULL,
   `locationId` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+
+--
+-- Dumping data for table `posts_location`
+--
+
+INSERT INTO `posts_location` (`postId`, `locationId`) VALUES
+(3, 8),
+(1, 1),
+(2, 10);
 
 -- --------------------------------------------------------
 
@@ -181,6 +207,7 @@ ALTER TABLE `comments`
 --
 ALTER TABLE `location`
   ADD PRIMARY KEY (`ID`);
+ALTER TABLE `location` ADD FULLTEXT KEY `location_idx` (`city`,`country`,`continent`);
 
 --
 -- Indexes for table `posts`
@@ -229,7 +256,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `location`
 --
 ALTER TABLE `location`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `posts`
