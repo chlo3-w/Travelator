@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" media="all">
         <link rel="stylesheet" href="views/css/stylesheet.css">
         <title>Travel Blog</title>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
@@ -43,24 +43,22 @@
         <br>
         <script>
             var blogPosts = new Bloodhound({
-                datumTokenizer: Bloodhound.tokenizers.whitespace,
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
                 remote: {
-                    url: 'api/search.php?query=%QUERY',
+                    url: 'http://localhost/Travelator/api/search.php?query=%QUERY',
                     wildcard: '%QUERY'
                 }
             });
-            //$(document).ready(function () {
-                $('.typeahead').typeahead(null, {
-                    name: 'blog-posts',
-                    display: 'title',
-                    source: blogPosts
-                });
+            $('.typeahead').typeahead(null, {
+                name: 'blog-posts',
+                display: 'title',
+                source: blogPosts
+            });
 
-                $('.typeahead').on('typeahead:selected', function (evt, item) {
-                    window.location.href = 'index.php/?controller=post&action=read&id=' + item.id;
-                });
-            //});
+            $('.typeahead').on('typeahead:selected', function (evt, item) {
+                window.location.href = 'http://localhost/Travelator/index.php/?controller=post&action=read&id=' + item.id;
+            });
         </script>
         <div id="layout" class="container-fluid">
             <div class="col-sm-12 text-center">  
