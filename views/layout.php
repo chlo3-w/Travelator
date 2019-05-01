@@ -43,7 +43,7 @@
         document.querySelector('.search').addEventListener('input', function(e) {
           console.log(e.target.value);
           
-          axios.get('search.php')
+          axios.get('api/search.php')
             .then(function (response) {
               // handle success
               const responseParsed = JSON.parse(response.data);
