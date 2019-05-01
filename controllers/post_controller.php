@@ -21,7 +21,6 @@ class PostController {
             require_once('views/posts/read.php');
             
 //            // call comments
-            require_once('models/comments_model.php');
             require_once('controllers/comments_controller.php');
             $commentsController = new CommentsController();
             $commentsController->read($_GET['id']);
