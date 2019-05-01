@@ -3,25 +3,25 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
-                 <div id="carouselExampleControls" class="card carousel slide" data-ride="carousel">
+                <div id="carouselExampleControls" class="card carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="card carousel-item active">
                             <div class="home-card-block">
                                 <!--//if this is changed to the location being the name of the picture, the .jpg file path will need to be added-->
-                                <img class="card-img float-left w-50" src="views/images/<?php echo $home{0}->img; ?>" alt="Bali">
+                                <img class="card-img float-left w-50" src=<?php echo "'views/images/". $home{0}->city . ".jpg'"; ?> >
                                 <h4 class="card-title"><?php echo $home{0}->title; ?></h4>
-                                <!--<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
+                                <p class="card-text"><?php echo $home{0}->content; ?></p>
                             </div>
-                            <div class="card-footer">
+                            <div class="card-footer w-100">
                                 <a class="card-text text-right" href="?controller=post&action=read&id=<?php echo $home{0}->id; ?>">Read More</a>
                             </div>   
                         </div>
                         <div class="card carousel-item">
                             <div class="home-card-block ">
                                 <!--if this is changed to the location being the name of the picture, the .jpg file path will need to be added-->
-                                <img class="card-img float-left w-50" src="views/images/<?php echo $home{1}->img; ?>" alt="Bali">
+                                <img class="card-img float-left w-50" src="views/images/<?php echo $home{1}->city; ?>.jpg">
                                 <h4 class="card-title"><?php echo $home{1}->title; ?></h4>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <p class="card-text"><?php echo $home{1}->content; ?></p>
                             </div>
                             <div class="card-footer">
                                 <a class="card-text text-right" href="?controller=post&action=read&id=<?php echo $home{1}->id; ?>">Read More</a>
@@ -30,24 +30,24 @@
                         <div class="card carousel-item">
                             <div class="home-card-block">
                                 <!--if this is changed to the location being the name of the picture, the .jpg file path will need to be added-->
-                                <img class="card-img float-left w-50" src="views/images/<?php echo $home{2}->img; ?>" alt="Bali">
+                                <img class="card-img float-left w-50" src="views/images/<?php echo $home{2}->city; ?>.jpg" alt="<?php echo $home{2}->city; ?>">
                                 <h4 class="card-title"><?php echo $home{2}->title; ?></h4>
-                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <p class="card-text"><?php echo $home{2}->content; ?></p>
                             </div>
                             <div class="card-footer">
                                 <a class="card-text text-right" href="?controller=post&action=read&id=<?php echo $home{2}->id; ?>">Read More</a>
                             </div> 
                         </div>
-                   
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                         </div>
+
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

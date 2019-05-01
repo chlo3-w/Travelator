@@ -9,13 +9,13 @@ class Post {
     public $img;
     public $location;
 
-    public function __construct($id, $title, $content, $img) {
+    public function __construct($id, $title, $content, $location) {
 //         public function __construct($id, $title, $content, $img, $location) {
         $this->id = $id;
         $this->title = $title;
         $this->content = $content;
-        $this->img = $img;
-//        $this->location = $location;
+//        $this->img = $img;
+        $this->city = $location;
     }
 
     public static function all() {
@@ -51,7 +51,10 @@ class Post {
         $req->bindParam(':title', $title);
         $req->bindParam(':location', $location);
         $req->bindParam(':content', $content);
-
+        
+        // need to add category and a session tag for user ID
+        // this should be a drop down table so that we can restrict the input to food (1), budget/adventure (2), culture (3)
+        
 // set parameters and execute
         if (isset($_POST['title']) && $_POST['title'] != "") {
             $filteredTitle = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
