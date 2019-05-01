@@ -1,4 +1,5 @@
 <?php
+require_once('models/comments_model.php');
 
 class CommentsController {
 
