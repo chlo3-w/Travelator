@@ -65,13 +65,13 @@ class PostController {
     }
     
     
-    public function readLocation() {
-        if (!isset($_GET['location']))
+    public function readCategory() {
+        if (!isset($_GET['category']))
             return call('pages', 'error');
         try {
             // we use the given id to get the correct post
-            $post = Post::findLocation($_GET['location']);
-            require_once('views/posts/readLocation.php');
+            $posts = Post::findCategory($_GET['category']);
+            require_once('views/posts/readAll.php');
         } catch (Exception $ex) {
             return call('pages', 'error');
         }

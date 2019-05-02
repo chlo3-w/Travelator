@@ -37,12 +37,6 @@ create_date DESC;');
         foreach ($req->fetchAll() as $post) {
             $list[] = new Post($post['id'], $post['title'], $post['content'], $post['city'], $post['country'], $post['continent'], $post['category']);
 
-        $req = $db->query('call readAll()');
-        // we create a list of Product objects from the database results
-        foreach ($req->fetchAll() as $post) {
-            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['city']);
-        }
-       
         }return $list;
     }
 
@@ -158,13 +152,18 @@ WHERE p.id = :id');
         $req->execute(array('id' => $id));
     }
 
-    public static function findLocation($location) {
+    public static function findCategory($category) {
         $db = Db::getInstance();
-        $req = $db->prepare('call searchLocation(:location)');
-        $req->execute(['location' => $location]);
+        $req = $db->prepare('SELECT * FROM posts p
+Inner join posts_category pc on pc.postId = p.id
+Inner join category c on pc.categoryId = c.category_id
+Inner join posts_location pl on pl.postId=p.id
+Inner join location l on pl.locationId=l.ID
+WHERE c.category = :category');
+        $req->execute(array('category' => $category));
         foreach ($req->fetchAll() as $post) {
             //make sure that you have these variable in the f
-            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['img'], $post['city']);
+            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['city'], $post['country'], $post['continent'], $post['category']);
         }
         return $list;
     }
