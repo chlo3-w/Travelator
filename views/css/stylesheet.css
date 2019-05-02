@@ -84,6 +84,32 @@ footer {
 a {
   color: palevioletred;
 }
+/*.carousel-inner {
+        max-height: 350px; 
+}*/
+.card {
+  min-height: 200px;
+}
+
+.card-img{
+     max-height: 200px;
+}
+
+.card-block {
+    vertical-align: middle;
+}
+
+.btn {
+    float: bottom;
+}
+/*.card img {
+max-width: 100%;
+  max-height: 250px;
+}*/
+
+/*.card-block img {
+      max-height: 250px; 
+}*/
 
 #worldMap {
   fill: #f4c3c2 !important;
@@ -150,3 +176,5 @@ circle:hover {
   padding: 2px;
   background-color: rgba(247, 246, 243, 0.7);
 }
+
+
