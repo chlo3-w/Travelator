@@ -33,12 +33,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="?controller=pages&action=login">Login</a>
                 </li>
-                <div class = "search-box float-right">
-                    <input type="text" name=""class="search-txt" placeholder="Type to search"/>
-                    <a class="search-btn" href="#">
-                        <i class="fas fa-search"></i> 
-                    </a>
-                </div>
+
 
                 <?php
                 if (isset($_SESSION['username'])) {
