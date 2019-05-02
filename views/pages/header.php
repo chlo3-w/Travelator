@@ -1,17 +1,25 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
+
+<!--//     require_once('connection.php');
+//       $db = Db::getInstance();
+//        $req = $db->query('SELECT * FROM category');-->
+
+<!--<html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <link rel= "stylesheet" href = "../css/stylesheet.css"/>
+        <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+        <title> Search </title>
     </head>
     <body>
-        <?php
-        // put your code here
-        ?>
+
+        <div class = "search-box">
+            <input type="text" name=""class="search-txt" placeholder="Type to search"/>
+            <a class="search-btn" href="#">
+                <i class="fas fa-search"></i> 
+            </a>
+        </div>
+
     </body>
-</html>
+</html>-->
