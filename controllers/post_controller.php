@@ -16,7 +16,7 @@ class PostController {
 
         try {
             // we use the given id to get the correct post
-            echo "PostController->read()";
+//            echo "PostController->read()";
             $post = Post::find($_GET['id']);
             require_once('views/posts/read.php');
             
