@@ -36,6 +36,7 @@ create_date DESC;');
         // we create a list of Product objects from the database results
         foreach ($req->fetchAll() as $post) {
             $list[] = new Post($post['id'], $post['title'], $post['content'], $post['city'], $post['country'], $post['continent'], $post['category']);
+
         }return $list;
     }
 
