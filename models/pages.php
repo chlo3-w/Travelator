@@ -9,7 +9,9 @@ class Pages {
         // we create a list of Product objects from the database results
          require_once('models/post.php');
         foreach ($req->fetchAll() as $post) {
+
             $home[] = new Post($post['id'], $post['title'], $post['content'], $post['city'], $post['country'], $post['continent'], $post['category']);
+
         }
         return $home;
     }

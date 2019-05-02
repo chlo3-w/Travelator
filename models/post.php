@@ -23,6 +23,7 @@ class Post {
     public static function all() {
         $list = [];
         $db = Db::getInstance();
+
         $req = $db->query('
 SELECT *
 FROM posts p
@@ -35,8 +36,14 @@ create_date DESC;');
         // we create a list of Product objects from the database results
         foreach ($req->fetchAll() as $post) {
             $list[] = new Post($post['id'], $post['title'], $post['content'], $post['city'], $post['country'], $post['continent'], $post['category']);
+
+        $req = $db->query('call readAll()');
+        // we create a list of Product objects from the database results
+        foreach ($req->fetchAll() as $post) {
+            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['city']);
         }
-        return $list;
+       
+        }return $list;
     }
 
     public static function find($id) {
