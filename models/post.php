@@ -21,10 +21,10 @@ class Post {
     public static function all() {
         $list = [];
         $db = Db::getInstance();
-        $req = $db->query('SELECT * FROM posts');
+        $req = $db->query('call readAll()');
         // we create a list of Product objects from the database results
         foreach ($req->fetchAll() as $post) {
-            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['img'], $post['location']);
+            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['city']);
         }
         return $list;
     }
