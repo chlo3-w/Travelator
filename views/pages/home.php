@@ -1,3 +1,4 @@
+<html>  
 
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
@@ -11,60 +12,47 @@
                         <div class="col-md-6">
                             <div class="card-block">
                                 <h4 class="card-title"><?php echo $home{0}->title; ?></h4>
-                                <p class="card-text"><?php echo $home{0}->content; ?></p>
-                                <a class="btn btn-light" href='?controller=post&action=read&id=<?php echo $home{0}->id; ?>'>Read More</a>
-
+                                <!--<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>-->
                             </div>
+                            <div class="card-footer">
+                                <a class="card-text text-right" href="?controller=post&action=read&id=<?php echo $home{0}->id; ?>">Read More</a>
+                            </div>   
                         </div>
-                    </div>  
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="container">
-                <div class="card">
-                    <div class="row"> 
-                        <div class="col-md-6">
-                            <img class="card-img" src=<?php echo "'views/images/" . $home{1}->city . ".jpg'"; ?> >
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card-block">
+                        <div class="card carousel-item">
+                            <div class="home-card-block ">
+                                <!--if this is changed to the location being the name of the picture, the .jpg file path will need to be added-->
+                                <img class="card-img float-left w-50" src="views/images/<?php echo $home{1}->img; ?>" alt="Bali">
                                 <h4 class="card-title"><?php echo $home{1}->title; ?></h4>
-                                <p class="card-text"><?php echo $home{1}->content; ?></p>
-                                <a class="btn btn-light" href='?controller=post&action=read&id=<?php echo $home{1}->id; ?>'>Read More</a>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                             </div>
+                            <div class="card-footer">
+                                <a class="card-text text-right" href="?controller=post&action=read&id=<?php echo $home{1}->id; ?>">Read More</a>
+                            </div>   
                         </div>
-                    </div>  
-                </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-            <div class="container">
-                <div class="card">
-                    <div class="row"> 
-                        <div class="col-md-6">
-                            <img class="card-img" src=<?php echo "'views/images/" . $home{2}->city . ".jpg'"; ?> >
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card-block">
+                        <div class="card carousel-item">
+                            <div class="home-card-block">
+                                <!--if this is changed to the location being the name of the picture, the .jpg file path will need to be added-->
+                                <img class="card-img float-left w-50" src="views/images/<?php echo $home{2}->img; ?>" alt="Bali">
                                 <h4 class="card-title"><?php echo $home{2}->title; ?></h4>
-                                <p class="card-text"><?php echo $home{2}->content; ?></p>
-                                <a class="btn btn-light" href='?controller=post&action=read&id=<?php echo $home{2}->id; ?>'>Read More</a>
+                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                             </div>
+                            <div class="card-footer">
+                                <a class="card-text text-right" href="?controller=post&action=read&id=<?php echo $home{2}->id; ?>">Read More</a>
+                            </div> 
                         </div>
-                    </div>  
+                   
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                         </div>
                 </div>
             </div>
         </div>
-
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
     </div>
 </div>
 
@@ -96,12 +84,14 @@
                 </span>
             </div>
         </div>
-    </div>
-</div>
 
-<div>
-    <div>
-        <div id="info-box"></div>
-        <?php echo file_get_contents("views/images/Continents.svg") ?>
-    </div>
-</div>
+        <p>Hello there <?php
+            if (isset($_SESSION['username']) && !empty($_SESSION['username'])) {
+                echo $_SESSION['username'];
+            } else
+                echo "world explorer";
+            ?>!<p>
+        <p>Welcome to the world's best Travel Blog!</p>
+        <p>This is the home page of the blog, be free to start exploring!</p>
+
+</html>
