@@ -2,29 +2,39 @@
 
 class Post {
 
-    // we define 3 attributes
     public $id;
     public $title;
     public $content;
-    public $img;
-    public $location;
+    public $city;
+    public $country;
+    public $continent;
+    public $category;
 
-    public function __construct($id, $title, $content, $location) {
-//         public function __construct($id, $title, $content, $img, $location) {
+    public function __construct($id, $title, $content, $city, $country, $continent, $category) {
         $this->id = $id;
         $this->title = $title;
         $this->content = $content;
-//        $this->img = $img;
-        $this->city = $location;
+        $this->city = $city;
+        $this->country = $country;
+        $this->continent = $continent;
+        $this->category = $category;
     }
 
     public static function all() {
         $list = [];
         $db = Db::getInstance();
-        $req = $db->query('call readAll()');
+        $req = $db->query('
+SELECT *
+FROM posts p
+Inner join posts_category pc on pc.postId = p.id
+Inner join category c on pc.categoryId = c.category_id
+Inner join posts_location pl on pl.postId=p.id
+Inner join location l on pl.locationId=l.ID
+ORDER BY    
+create_date DESC;');
         // we create a list of Product objects from the database results
         foreach ($req->fetchAll() as $post) {
-            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['city']);
+            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['city'], $post['country'], $post['continent'], $post['category']);
         }
         return $list;
     }
@@ -33,14 +43,19 @@ class Post {
         $db = Db::getInstance();
         //use intval to make sure $id is an integer
         $id = intval($id);
-        $req = $db->prepare('SELECT * FROM posts WHERE id = :id');
+        $req = $db->prepare('SELECT * FROM posts p
+Inner join posts_category pc on pc.postId = p.id
+Inner join category c on pc.categoryId = c.category_id
+Inner join posts_location pl on pl.postId=p.id
+Inner join location l on pl.locationId=l.ID
+WHERE p.id = :id');
         //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('id' => $id));
         $post = $req->fetch();
         if ($post) {
-            return new Post($post['id'], $post['title'], $post['content'], $post['img'], $post['location']);
+            return new Post($post['id'], $post['title'], $post['content'], $post['city'], $post['country'], $post['continent'], $post['category']);
         } else {
-            //replace with a more meaningful exception
+//replace with a more meaningful exception
             throw new Exception("No post returned, click <a href='/Travelator/index.php'>here</a> to go back to the homepage.");
         }
     }
@@ -51,10 +66,9 @@ class Post {
         $req->bindParam(':title', $title);
         $req->bindParam(':location', $location);
         $req->bindParam(':content', $content);
-        
+
         // need to add category and a session tag for user ID
         // this should be a drop down table so that we can restrict the input to food (1), budget/adventure (2), culture (3)
-        
 // set parameters and execute
         if (isset($_POST['title']) && $_POST['title'] != "") {
             $filteredTitle = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);

@@ -319,6 +319,74 @@ ALTER TABLE `posts_location`
   ADD CONSTRAINT `posts_location_ibfk_2` FOREIGN KEY (`locationId`) REFERENCES `location` (`ID`);
 COMMIT;
 
+DELIMITER //
+CREATE PROCEDURE addPost3
+(IN title VARCHAR(30) COLLATE latin1_general_ci,
+IN content VARCHAR (30) COLLATE latin1_general_ci,
+IN user_id VARCHAR(30) COLLATE latin1_general_ci,
+IN Incategory VARCHAR (30) COLLATE latin1_general_ci,
+IN City VARCHAR (30) COLLATE latin1_general_ci,
+IN country VARCHAR (30) COLLATE latin1_general_ci,
+IN continent VARCHAR (30) COLLATE latin1_general_ci)
+BEGIN
+DECLARE TempPostId int unsigned default 0; 
+DECLARE TempLocationId int unsigned default 0; 
+START TRANSACTION;
+INSERT INTO posts (title, content, user_id)
+VALUES (title, content, user_id);
+Set  TempPostId = last_insert_id() COLLATE latin1_general_ci;
+INSERT INTO posts_category (postId, categoryId)
+VALUES (TempPostId, (Select category_id FROM category WHERE category = Incategory));
+INSERT INTO location (city, country, continent)
+VALUES (city, country, continent);
+Set TempLocationId = last_insert_id() COLLATE latin1_general_ci;
+INSERT INTO posts_location (postId, locationId)
+VALUES (TempPostId, TempLocationId);
+COMMIT; 
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE addUser
+(IN username VARCHAR(30), 
+ IN first_name VARCHAR (30), 
+ IN last_name VARCHAR(30), 
+ IN email VARCHAR(30), 
+ IN password VARCHAR(30))
+BEGIN
+INSERT INTO users (username, first_name, last_name, email, password)
+VALUES (username, first_name, last_name, email, password);
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE addPrivledges()
+BEGIN
+UPDATE users
+SET author = 1
+ORDER BY     
+user_id DESC 
+LIMIT 1;       
+END // 
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE selectAllPost ()
+BEGIN
+SELECT *
+FROM posts p
+Inner join posts_category pc on pc.postId = p.id
+Inner join category c on pc.categoryId = c.category_id
+Inner join posts_location pl on pl.postId=p.id
+Inner join location l on pl.locationId=l.ID
+ORDER BY    
+create_date DESC;  	
+END //
+DELIMITER ;
+
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+

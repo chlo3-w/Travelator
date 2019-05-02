@@ -1,23 +1,38 @@
- <div class="login">
-  <h2 class="text-center">Login to Travelator</h2>
-  <hr>
-  <div id="login-row" class="row justify-content-center align-items-center">
-      <div id="login-column" class="">
-                    <div id="login-box" class="">
-  <form action="" method="post">
-    <div class="form-group">
-      <label for="username">Username:</label>
-      <input type="text" class="form-control" id="username" placeholder="Username" name="username" autofocus="true" required>
-    </div>
-    <div class="form-group">
-      <label for="password">Password:</label>
-      <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>
-    </div>
-<input type="submit" name="login" class="btn btn-info" value="Login" /> 
-<br><br>
-<h5>Please <a href="?controller=pages&action=register">register</a> if this is your first time logging in!</h5><br><br>                   
-  </form>
-        </div>
-     </div>
-  </div>
-</div>
+<div class="container-fluid">
+		<div class="container">
+			<div class="formBox">
+				<form method="post" id="login">
+                                <div class="row">
+                                        <div class="col-sm-12 text-center">
+                                                <h1>Login to Travelator</h1>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-sm-6">
+                                                <div class="inputBox">
+                                                        <div class="inputText">Username</div>
+                                                        <input type="text" class="input" name="username" minlength="2" required>
+                                                </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                                <div class="inputBox">
+                                                        <div class="inputText">Password</div>
+                                                        <input type="password" class="input" name="password" minlength="6" required>
+                                                </div>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="col-sm-12">
+                                                <input type="submit" name="login" class="button" value="Login" /> 
+                                        </div>
+                                  <div class="row" id="login-register">
+                                        <div class="col-sm-12">   
+                                            <p><h5>Please <a href="?controller=pages&action=register">register</a> if this is your first time logging in!</h5></p>
+                                        </div>
+                                </div>
+				</form>
+			</div>
+		</div>
+	</div>
+ 
