@@ -2,7 +2,7 @@
 <div class="comment-display" style="display: flex; flex-flow: row wrap;">
     <div class="avatar" >
         <!--<img id="avatar" alt="avatar" height="50" width="50" src="<?php echo $comment->avatar; ?>">-->
-        <img id="avatar" alt="avatar" height="100" width="100" src="images/userProfiles/Sasha.jpeg">
+        <img id="avatar" alt="avatar" height="100" width="100" src="views/images/userProfiles/Sasha.jpeg">
     </div>
     <div class="comment-content" style="padding-left: 10px;">
         <header class="comment-header">

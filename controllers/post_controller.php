@@ -77,7 +77,13 @@ class PostController {
         }
     }
 
-    
+     public function gallery() {
+      //example data to use in the home page
+      $posts = Post::all();
+      require_once('views/pages/gallery.php');
+      
+    }
+
     
 }
 ?>

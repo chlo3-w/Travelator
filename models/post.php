@@ -24,19 +24,15 @@ class Post {
         $list = [];
         $db = Db::getInstance();
 
-        $req = $db->query('
-SELECT *
-FROM posts p
-Inner join posts_category pc on pc.postId = p.id
-Inner join category c on pc.categoryId = c.category_id
-Inner join posts_location pl on pl.postId=p.id
-Inner join location l on pl.locationId=l.ID
-ORDER BY    
-create_date DESC;');
+        $req = $db->query(
+                'SELECT * FROM posts 
+                        LEFT JOIN location 
+                        ON posts.location_id = location.ID 
+                        INNER JOIN category 
+                        ON posts.category_id = category.category_id');
         // we create a list of Product objects from the database results
         foreach ($req->fetchAll() as $post) {
             $list[] = new Post($post['id'], $post['title'], $post['content'], $post['city'], $post['country'], $post['continent'], $post['category']);
-
         }return $list;
     }
 
@@ -44,12 +40,12 @@ create_date DESC;');
         $db = Db::getInstance();
         //use intval to make sure $id is an integer
         $id = intval($id);
-        $req = $db->prepare('SELECT * FROM posts p
-Inner join posts_category pc on pc.postId = p.id
-Inner join category c on pc.categoryId = c.category_id
-Inner join posts_location pl on pl.postId=p.id
-Inner join location l on pl.locationId=l.ID
-WHERE p.id = :id');
+        $req = $db->prepare('SELECT * FROM posts 
+                            LEFT JOIN location 
+                            ON posts.location_id = location.ID 
+                            INNER JOIN category 
+                            ON posts.category_id = category.category_id
+                            WHERE posts.id = :id');
         //the query was prepared, now replace :id with the actual $id value
         $req->execute(array('id' => $id));
         $post = $req->fetch();
@@ -63,29 +59,37 @@ WHERE p.id = :id');
 
     public static function add() {
         $db = Db::getInstance();
-        $req = $db->prepare("Insert into posts(title, content, location) values (:title, :content, :location);");
-        $req->bindParam(':title', $title);
-        $req->bindParam(':location', $location);
-        $req->bindParam(':content', $content);
+        $req = $db->prepare("INSERT INTO location (city) 
+                                VALUES (:city);
+                                SET @location_id = LAST_INSERT_ID();
+                            INSERT INTO category (category) 
+                                VALUES (:category);
+                                SET @category_id = LAST_INSERT_ID();  
+                            INSERT INTO posts (location_id, category_id, title, content)
+                                VALUES (@location_id, @category_id, :title , :content );");
 
-        // need to add category and a session tag for user ID
-        // this should be a drop down table so that we can restrict the input to food (1), budget/adventure (2), culture (3)
+        $req->bindParam(':title', $title);
+        $req->bindParam(':city', $city);
+        $req->bindParam(':content', $content);
+        $req->bindParam(':category', $category);
+
 // set parameters and execute
         if (isset($_POST['title']) && $_POST['title'] != "") {
             $filteredTitle = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
         }
         if (isset($_POST['location']) && $_POST['location'] != "") {
-            $filteredLocation = filter_input(INPUT_POST, 'location', FILTER_SANITIZE_SPECIAL_CHARS);
+            $filteredCity = filter_input(INPUT_POST, 'location', FILTER_SANITIZE_SPECIAL_CHARS);
         }
         if (isset($_POST['content']) && $_POST['content'] != "") {
             $filteredContent = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
         }
+        $category = $_POST['category'];
         $title = $filteredTitle;
-        $location = $filteredLocation;
-        $content = $filteredContent;
+        $city = $filteredCity;
+        $content = html_entity_decode($filteredContent);
         $req->execute();
 
-        Post::uploadFile($location);
+        Post::uploadFile($city);
     }
 
     const AllowedTypes = ['image/jpeg', 'image/jpg'];
@@ -93,7 +97,7 @@ WHERE p.id = :id');
 
 //die() function calls replaced with trigger_error() calls
 //replace with structured exception handling
-    public static function uploadFile(string $location) {
+    public static function uploadFile(string $city) {
 
         if (empty($_FILES[self::InputKey])) {
             //die("File Missing!");
@@ -111,7 +115,7 @@ WHERE p.id = :id');
 
         $tempFile = $_FILES[self::InputKey]['tmp_name'];
         $path = "views/images/";
-        $destinationFile = $path . $location . '.jpeg';
+        $destinationFile = $path . $city . '.jpeg';
 
         if (!move_uploaded_file($tempFile, $destinationFile)) {
             trigger_error("Handle Error");
@@ -125,10 +129,26 @@ WHERE p.id = :id');
 
     public static function update($id) {
         $db = Db::getInstance();
-        $req = $db->prepare("Update posts set title=:title, content=:content where id=:id");
+        $req = $db->prepare("UPDATE posts
+                            SET title = :title, content = :content
+                            WHERE posts.id = :id;
+
+                            UPDATE posts 
+                            INNER JOIN location 
+                            ON posts.location_id = location.ID 
+                            SET location.city = :city 
+                            WHERE posts.id = :id;
+
+                            UPDATE posts
+                            INNER JOIN category
+                            ON posts.category_id = category.category_id
+                            SET category.category = :category
+                            WHERE posts.id = :id;");
         $req->bindParam(':id', $id);
         $req->bindParam(':title', $title);
         $req->bindParam(':content', $content);
+        $req->bindParam(':city', $city);
+        $req->bindParam(':category', $category);
 
 // set name and price parameters and execute
         if (isset($_POST['title']) && $_POST['title'] != "") {
@@ -137,9 +157,13 @@ WHERE p.id = :id');
         if (isset($_POST['content']) && $_POST['content'] != "") {
             $filteredContent = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_SPECIAL_CHARS);
         }
-
+        if (isset($_POST['location']) && $_POST['location'] != "") {
+            $filteredCity = filter_input(INPUT_POST, 'location', FILTER_SANITIZE_SPECIAL_CHARS);
+        }
         $title = $filteredTitle;
         $content = $filteredContent;
+        $city = $filteredCity;
+        $category = $_POST['category'];
         $req->execute();
     }
 
@@ -153,14 +177,16 @@ WHERE p.id = :id');
     }
 
     public static function findCategory($category) {
+        $list = [];
         $db = Db::getInstance();
-        $req = $db->prepare('SELECT * FROM posts p
-Inner join posts_category pc on pc.postId = p.id
-Inner join category c on pc.categoryId = c.category_id
-Inner join posts_location pl on pl.postId=p.id
-Inner join location l on pl.locationId=l.ID
-WHERE c.category = :category');
+        $req = $db->prepare('SELECT * FROM posts 
+                            LEFT JOIN location 
+                            ON posts.location_id = location.ID 
+                            INNER JOIN category 
+                            ON posts.category_id = category.category_id
+                            WHERE category.category = :category');
         $req->execute(array('category' => $category));
+   
         foreach ($req->fetchAll() as $post) {
             //make sure that you have these variable in the f
             $list[] = new Post($post['id'], $post['title'], $post['content'], $post['city'], $post['country'], $post['continent'], $post['category']);
