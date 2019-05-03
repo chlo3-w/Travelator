@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The last WordPress map plugin you'll ever need: Vector / Google / Image maps - all in one plugin. Use included SVG country maps or draw your own.">
+    <meta name="google-site-verification" content="bEozpibfacshdpM6W4JeiVNRXbj9BcniJka_gyHc9nk" />
+
+    <title>MapSVG - WordPress map plugin | Vector, Google, Image maps</title>
+
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel='stylesheet' id='mapsvg-css'  href='/blog/wp-content/plugins/mapsvg5/dist/mapsvg-front.min.css?ver=5.0.6' type='text/css' media='all' />
+    <link href="/css/landing-page-5.css" rel="stylesheet">
+    <link href="/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-73140091-1', 'auto');
+        ga('send', 'pageview');
+
+        // console.log(top.location.href);
+    </script>
+
+</head>
+
+<body id="main-page">
+
+<!-- Navigation -->
+<nav class="navbar navbar-default topnav" role="navigation">
+    <div class="container topnav">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand topnav" href="/" style="display: inline-block">
+                <img src="/img/logo.svg"/>
+            </a>
+
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/">WordPress plugin</a>
+                </li>
+                <li>
+                    <a href="/add-ons/gallery">Add-ons</a>
+                </li>
+                <li>
+                    <a href="/jquery/">jQuery plugin</a>
+                </li>
+                <li>
+                    <a href="/maps/">Maps</a>
+                </li>
+                <li>
+                    <a href="/docs/">Docs</a>
+                </li>
+                <!--<li>-->
+                    <!--<a href="/documentation/">Documentation</a>-->
+                <!--</li>-->
+                <li>
+                    <a href="/changelog/">Changelog</a>
+                </li>
+                <li>
+                    <a href="https://mapsvg.ticksy.com/">Support</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+<!-- Header -->
+<a name="about"></a>
+
+
+
+<div class="intro-header intro-header-main" id="intro-header">
+
+    <div class="container">
+
+        <div class="row">
+            <div>
+
+                <!--<div>-->
+                <!--<img src="/img/logo.svg" style="width: 250px; height: auto;"/>-->
+                <!--</div>-->
+
+                <div class="intro-message">
+                    <h1 id="moto" style=" ">
+                        The last WordPress map plugin you'll ever need.
+                    </h1>
+                    <h3><i class="fa fa-location-arrow"></i> Vector maps,
+                        <i class="fa fa-google"></i> Google Maps,
+                        <i class="fa fa-picture-o"></i> Image maps.
+                        <br />
+                        In one plugin.</h3>
+
+                    <!--<hr class="intro-divider">-->
+                    <ul class="list-inline intro-social-buttons">
+                        <li>
+                            <a class="btn btn-default btn-transparent btn-lg" onclick="ga('send', 'event', 'buttons', 'purchase', 'Premium $46');" href="https://1.envato.market/c/1301214/275988/4415?u=https%3A%2F%2Fcodecanyon.net%2Fcart%2Fadd_items%3Fitem_ids%3D2547255"><i class="fa fa-shopping-cart"></i> <span class="network-name">Purchase $46</a>
+                            <!--<a href="/download"  class="btn btn-default btn-transparent btn-lg"><i class="fa fa-download fa-fw"></i>  <span class="network-name">Download</span></a>-->
+                        </li>
+                        <li>
+                            <form enctype="multipart/form-data" action="https://demo.mapsvg.com" method="post" id="cbs-register-2">
+                                <input name="cbs_action" type="hidden" id="cbs_action_2" value="cbs_demo">
+
+                                <button name="cbs_register" type="submit" style="padding: 13px 18px;" class="btn btn-default btn-lg btn-transparent btn-transparent-white network-name"><i class="fa fa-wordpress fa-fw"></i> Demo</button>
+
+                            </form>
+                        </li>
+                        <li>
+                            <a data-lity class="btn btn-default btn-transparent-white btn-transparent btn-lg" href="https://www.youtube.com/watch?v=E-si6gn9Ozk" rel="nofollow" target="_blank"><i class="fa fa-film fa-fw"></i>  <span class="network-name">Video</span></a>
+                        </li>
+
+                    </ul>
+
+                    <div class="purchased-by">
+                        <div>
+                            Used in projects for:<br />
+                        </div>
+                        <img src="/img/logos/microsoft.svg" />
+                        <img src="/img/logos/cebit.svg" />
+                        <img src="/img/logos/moneygram.svg" />
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- /.container -->
+</div>
+
+
+
+<div id="mmm" class="hide-markers content-section-111">
+    <div id="mapsvg-4"></div>
+    <div id="mapsvg-google-map"></div>
+    <div id="mapsvg-image-map"></div>
+</div>
+
+<!-- /.intro-header -->
+
+
+<!--<div style="background-color: #f5f5f5;">-->
+<!--<div class="container" style="padding: 30px 0; text-align: center;">-->
+<!--<div class="purchased-by">-->
+<!--<div style="font-size: 16px; color: #aaa; line-height: 40px;">-->
+<!--Used in projects for:-->
+<!--</div>-->
+<!--<img src="/img/logos/microsoft.svg" style="height: 40px;"/>-->
+<!--<img src="/img/logos/cebit.svg" style="height: 40px;"/>-->
+<!--<img src="/img/logos/moneygram.svg" style="height: 40px;"/>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<div id="topline"></div>
+
+
+<div id="info-blocks">
+
+    <div class="mapsvg-feature-section active">
+
+
+        <!--<p class="lead" style="text-align: center; margin-bottom: 150px;">-->
+        <!--MapSVG is a <b>WordPress map plugin</b><br /> which is able create all 3 kinds of maps:<br /><br />-->
+        <!--<em>1. Interactive vector maps</em><br />-->
+        <!--<em>2. Google maps</em><br />-->
+        <!--<em>3. Image maps</em>-->
+        <!--</p>-->
+
+        <div class="centered">
+            <!--<div class="section-title col-xs-9 col-sm-4">one</div>-->
+            <h2 class="section-subtitle">Interactive vector maps</h2>
+        </div>
+
+        <p class="lead">
+            Turn any vector or jpeg/png image into an interactive map with MapSVG WordPress mapping plugin.
+        </p>
+        <p class="lead">
+            More than 100+ countries and World <a href="//mapsvg.com/maps" target="_blank">maps are included in the plugin</a> <i class="fa fa-external-link"></i>
+        </p>
+
+    </div>
+
+    <div class="mapsvg-feature-section" id="section-popovers">
+        <p class="lead" style="text-align: center;">
+            Show <em>tooltips</em> & <em>pop-ups</em>.<br />
+        </p>
+    </div>
+
+    <div class="mapsvg-feature-section" id="section-popovers-2">
+        <p class="lead" style="text-align: center;">
+            Create any HTML content with custom fields, headers, images.
+            <!--<img src="/img/templates.png" style="max-width: 100%; margin-top: 20px; border-radius: 4px; box-shadow: 0 0 15px rgba(0,0,0,.2);" />-->
+
+        </p>
+    </div>
+
+    <div class="mapsvg-feature-section" id="section-link">
+        <p class="lead" style="text-align: center;">
+            Map regions can work as links.<br />
+        </p>
+    </div>
+
+    <div class="mapsvg-feature-section" id="section-disable">
+        <p class="lead" style="text-align: center;">
+            Disable some regions.
+        </p>
+    </div>
+
+    <div class="mapsvg-feature-section" id="section-choro">
+        <!--<div class="section-title col-xs-9 col-sm-4">data visualization</div>-->
+        <!--<h2 class="section-subtitle">Interactive vector maps</h2>-->
+        <p class="lead" >
+            Visualize your data: show number of votes, average income, weather - by each region - with different shades of a color.<br />
+        </p>
+    </div>
+
+
+    <div class="mapsvg-feature-section" id="section-directory">
+        <p class="lead" style="text-align: center;">
+            Show <em>directory</em> with a list of states / provinces / countries near your interactive map.
+        </p>
+    </div>
+
+    <div class="mapsvg-feature-section" id="section-directory-2">
+        <p class="lead" style="text-align: center;">
+            Create a list of objects with custom fields.<br />
+            <img class="lazy" data-src="/img/form-2.png" style="max-width: 100%; margin-top: 20px; border-radius: 4px; box-shadow: 0 0 15px rgba(0,0,0,.2);" />
+        </p>
+        <p class="lead" style="text-align: center;">
+            Possible field types: <br />
+            <em>text, textarea, radio, checkbox, WordPress post, <br />date, images, status, regions, marker.</em>
+        </p>
+    </div>
+
+    <div class="mapsvg-feature-section" id="section-csv">
+        <p class="lead" style="text-align: center;">
+            Import large data sets from a CSV file.<br />
+            <img class="lazy" data-src="/img/csv.png" style="max-width: 100%; margin-top: 20px; border-radius: 4px; box-shadow: 0 0 15px rgba(0,0,0,.2);" />
+        </p>
+    </div>
+
+    <div class="mapsvg-feature-section" id="section-markers-1">
+        <p class="lead" style="text-align: center;">
+            Add <em>markers</em> by entering an address or lat/lon coordinates.<br />
+            Choose one of included marker images or upload your own.
+        </p>
+    </div>
+
+    <div class="mapsvg-feature-section" id="section-filters">
+        <p class="lead" style="text-align: center;">
+            Add <em>search</em> and <em>filters</em>.<br /><br />
+            Do you need to create a <em>store locator map</em> with search for nearby shops by distance?<br />
+            See examples on the <a href="/wordpress-store-locator">Store Locator Map</a> page.
+        </p>
+    </div>
+
+
+    <div class="mapsvg-feature-section" id="section-details">
+        <p class="lead" style="text-align: center;">
+            Show <em>Details View</em>.<br />
+            It can be located over the map or outside of it in any custom container.
+        </p>
+    </div>
+
+    <!--<div class="mapsvg-feature-section active" id="section-download-1">-->
+    <!--<p class="lead" style="text-align: center;">-->
+    <!--<a href="/download"  class="btn     btn-default btn-lg"><i class="fa fa-download"></i>  <span class="network-name">Download MapSVG</span></a>-->
+    <!--</p>-->
+    <!--</div>-->
+
+    <div class="mapsvg-feature-section" id="section-google-1">
+        <div class="centered" id="test2">
+            <!--<div class="section-title col-xs-9 col-sm-4">two</div>-->
+            <h2 class="section-subtitle">Google Maps</h2>
+        </div>
+
+
+        <p class="lead">
+            Overlay vector maps on Google Map.<br />
+            Positioning is done automatically.
+        </p>
+    </div>
+
+    <div class="mapsvg-feature-section" id="section-google-2" style="text-align: center;">
+        <p class="lead" style="text-align: center;">
+            Map type:
+        </p>
+
+
+        <div class="btn-group" data-toggle="buttons" id="google-map-type" style="margin: 0 auto; margin-bottom: 60px;">
+            <label class="btn btn-default active">
+                <input type="radio" name="google-map-type" autocomplete="off" checked value="roadmap"> Roadmap
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="google-map-type" autocomplete="off" value="satellite" > Satellite
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="google-map-type" autocomplete="off" value="terrain"> Terrain
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="google-map-type" autocomplete="off" value="hybrid"> Hybrid
+            </label>
+        </div>
+
+
+        <p class="lead" style="text-align: center;">
+            Thousands of map styles from <a href="https://snazzymaps.com" rel="nofollow">SnazzyMaps</a><br />
+            (works only with <i>Roadmap / Terrain</i> map types):<br />
+        </p>
+
+
+        <div class="btn-group" data-toggle="buttons" id="google-map-style" style="margin: 0 auto;">
+            <label class="btn btn-default active">
+                <input type="radio" name="google-map-style" autocomplete="off" checked value="default"> Default
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="google-map-style" autocomplete="off" value="silver" > Silver
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="google-map-style" autocomplete="off" value="retro" > Retro
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="google-map-style" autocomplete="off" value="dark"> Dark
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="google-map-style" autocomplete="off" value="night"> Night
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" name="google-map-style" autocomplete="off" value="blue"> Blue
+            </label>
+        </div>
+
+    </div>
+
+    <div class="mapsvg-feature-section" id="section-airport" style="text-align: center;">
+        <p class="lead" style="text-align: center;">
+            Draw your artwork in any vector editing software.<br />
+            Overlay it on Google Map.
+        </p>
+    </div>
+
+    <div class="mapsvg-feature-section" id="section-airport-2" style="text-align: center;">
+        <p class="lead" style="text-align: center;">
+            This map is also clickable.<br />
+        </p>
+    </div>
+
+    <div class="mapsvg-feature-section" id="section-groups" style="text-align: center;">
+        <p class="lead" style="text-align: center;">
+            Add <em>object visibility toggles</em>.
+        </p>
+    </div>
+
+    <!--<div class="mapsvg-feature-section active" id="section-download-2">-->
+    <!--<p class="lead" style="text-align: center;">-->
+    <!--<a href="/download"  class="btn btn-default btn-lg"><i class="fa fa-download"></i>  <span class="network-name">Download MapSVG</span></a>-->
+    <!--</p>-->
+    <!--</div>-->
+
+    <div class="mapsvg-feature-section" id="section-image-map">
+        <div class="centered" >
+            <!--<div class="section-title col-xs-9 col-sm-4">three</div>-->
+            <h2 class="section-subtitle">Image maps</h2>
+        </div>
+
+        <p class="lead">
+            MapSVG has drawing tools which allow you to create
+            interactive Image Maps from raster JPEG/PNG images.
+            <img class="lazy" data-class="lazy" data-src="/img/draw.png" style="max-width: 100%; margin-top: 20px; border-radius: 4px; box-shadow: 0 0 15px rgba(0,0,0,.2);" />
+
+        </p>
+    </div>
+
+    <div class="mapsvg-feature-section" id="section-js">
+        <div class="">
+            <!--<div class="section-title col-xs-9 col-sm-4"></div>-->
+            <h2 class="section-subtitle">Custom functionality</h2>
+        </div>
+        <p class="lead">
+            MapSVG is extremely extendable with numerous javaScript event handlers.<br />
+            <em>Try to click on any building!</em> <br />
+            <img class="lazy" data-src="/img/js.png" style="max-width: 100%; margin-top: 20px; border-radius: 4px; box-shadow: 0 0 15px rgba(0,0,0,.2);" />
+        </p>
+    </div>
+
+    <div class="mapsvg-feature-section" id="section-css">
+        <div class="centered">
+            <!--<div class="section-title col-xs-9 col-sm-4"></div>-->
+            <h2 class="section-subtitle">Custom styles</h2>
+        </div>
+        <p class="lead">
+            Fine-tune any styles with built-in CSS editor.<br />
+            <img class="lazy" data-src="/img/css.png" style="max-width: 100%; margin-top: 20px; border-radius: 4px; box-shadow: 0 0 15px rgba(0,0,0,.2);" />
+        </p>
+
+    </div>
+
+    <div class="mapsvg-feature-section active" id="section-download-3">
+        <!--<p class="lead centered" style="margin-bottom: 40px;">-->
+            <!--<span style="color: gold;">-->
+                <!--<i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-half-o"></i>-->
+            <!--</span><br/>-->
+            <!--&lt;!&ndash;See <a target="_blank" rel="nofollow" href="https://codecanyon.net/item/mapsvg-responsive-vector-maps-floorplans-with-directory-search-filters/reviews/2547255?utf8=%E2%9C%93&reviews_controls%5Bsort%5D=ratings_descending">240+ real reviews on CodeCanyon <i class="fa fa-external-link"></i></a>&ndash;&gt;-->
+        <!--</p>-->
+        <div class="centered" style="margin-bottom: 40px;">
+            <div style="margin-bottom: 30px;">
+                <a class="btn btn-danger btn-lg" onclick="ga('send', 'event', 'buttons', 'purchase', 'Premium $46');" href="https://1.envato.market/c/1301214/275988/4415?u=https%3A%2F%2Fcodecanyon.net%2Fcart%2Fadd_items%3Fitem_ids%3D2547255"><i class="fa fa-shopping-cart"></i> <span class="network-name">Purchase $46</a>
+                <!--<a href="/download"  class="btn btn-danger btn-lg"><i class="fa fa-download"></i>  <span class="network-name">Download</span></a>-->
+            </div>
+            <form enctype="multipart/form-data" action="https://demo.mapsvg.com" method="post" id="cbs-register-2" style="margin-bottom: 30px;">
+                <input name="cbs_action" type="hidden" id="cbs_action_3" value="cbs_demo">
+                <button name="cbs_register" type="submit" class="btn btn-default btn-lg network-name"><i class="fa fa-wordpress"></i> WP Admin Demo</button>
+            </form>
+            <div class="centered" style="margin-bottom: 30px;">
+                <a data-lity class="btn btn-default btn-lg" href="https://www.youtube.com/watch?v=E-si6gn9Ozk" rel="nofollow" target="_blank"><i class="fa fa-film fa-fw"></i>  <span class="network-name">Video: creating a map (4min)</span></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="mapsvg-feature-section" id="section-final"></div>
+</div>
+
+<a  name="contact"></a>
+<div id="bottom" class="banner about-author" style="overflow:hidden; color: white;">
+
+    <div class="container centered">
+
+        <!--<ul class="list-inline intro-social-buttons" style="margin-bottom: 50px;">-->
+        <!--<li>-->
+
+        <!--</li>-->
+        <!--</ul>-->
+        <div class="section-title-white section-title col-xs-9 col-sm-4">questions?</div>
+        <h2 class="section-subtitle"  style="margin-bottom: 30px; text-align: center;">Reliable support</h2>
+
+        <!--<p class="lead" style="color: white;margin-bottom: 40px;">-->
+        <!--Presale questions?-->
+        <!--<br />-->
+        <!--Need help with installation or setup? <br />-->
+        <!--Need a custom functionality? <br />-->
+        <!--Something doesn't work?-->
+
+
+        <!--</p>-->
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <p class="lead" style="color: white;">
+                    If you face any problems with the plugin or have pre-purchase questions - <br>
+                    our support team is always ready to help.<br>
+                    <br>
+                    <a href="https://mapsvg.ticksy.com/">Open a new support ticket</a>
+
+                </p>
+            </div>
+        </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+
+                <ul id="bottomnav">
+                        <li>
+                            <a href="/">MapSVG WordPress plugin</a>
+                        </li>
+                        <li>
+                            <a href="/add-ons/gallery">MapSVG.Gallery add-on</a>
+                        </li>
+                        <li>
+                            <a href="/jquery/">MapSVG jQuery plugin</a>
+                        </li>
+                        <li>
+                            <a href="/maps/">SVG maps</a>
+                        </li>
+                        <li>
+                            <a href="/docs/">Docs</a>
+                        </li>
+                        <!--<li>-->
+                        <!--<a href="/documentation/">Documentation</a>-->
+                        <!--</li>-->
+                        <li>
+                            <a href="/changelog/">Changelog</a>
+                        </li>
+                        <li>
+                            <a href="https://mapsvg.ticksy.com/">Support</a>
+                        </li>
+                    </ul>
+                <!-- /.navbar-collapse -->
+            <!-- /.container -->
+
+
+    </div>
+    <!-- /.container -->
+
+</div>
+<!-- /.banner -->
+
+
+<script type="text/javascript" src="/js/jquery.js"></script>
+
+<script type="text/javascript" >
+    var ajaxurl = "//mapsvg.com/blog/wp-admin/admin-ajax.php";
+    var mapsvg_paths = {"root":"\/blog\/wp-content\/plugins\/mapsvg5\/","templates":"\/blog\/wp-content\/plugins\/mapsvg5\/js\/mapsvg-admin\/templates\/","maps":"\/blog\/wp-content\/plugins\/mapsvg5\/maps\/","uploads":"\/blog\/wp-content\/uploads\/mapsvg5\/"};
+</script>
+
+<script src="/js/bootstrap.min.js"></script>
+
+<script src="/js/jquery.lazy.min.js"></script>
+<script type="text/javascript" src="/blog/wp-content/plugins/mapsvg5/dist/mapsvg-front.min.js?ver=5.0.6"></script>
+
+<script type='text/javascript' src='js/landing5.js?v=1230011129999111'></script>
+
+<link href="/css/lity.min.css" rel="stylesheet">
+<script type='text/javascript' src='/js/lity.min.js'></script>
+
+</body>
+
+</html>
