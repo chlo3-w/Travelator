@@ -16,7 +16,7 @@
                   $_SESSION['message'] = "All fields are required!";
               } else {
                 $db = Db::getInstance();
-                $req = $db->prepare("SELECT * FROM users WHERE username = :username AND password = :password");
+                $req = $db->prepare("SELECT * FROM users WHERE username = :username AND password = MD5(:password)");
                 $req->bindParam(':username', $username);
                 $req->bindParam(':password', $password);
                 $req->bindParam(':userId', $userId);
@@ -29,13 +29,15 @@
                 $username = $filteredUsername;
                 $password = $filteredPassword;
                 $req->execute();
+                $result = $req->fetch(PDO::FETCH_ASSOC);
                 $count = $req->rowCount();
                 if ($count > 0) {
                     $_SESSION["username"] = filter_input(INPUT_POST, 'username');
-                    $_SESSION["userId"] = $userId;
-                    $_SESSION['message'] = "Login success! Hello ". $_SESSION["username"];
+                    $_SESSION['message'] = "Login success! Hello ". $_SESSION["username"]. "<br> Please click <a href='index.php?controller=pages&action=home'>here</a> to go to the homepage."; 
+                    $_SESSION['author'] = $result['author'];
+                    //INSERT SESSION AUTHOR HERE^^
                 } else {
-                    $_SESSION['message'] = "Wrong email/password combination :(";
+                    $_SESSION['message'] = "Wrong email/password combination :( <br> Please <a href='index.php?controller=pages&action=login'>try again</a>!";
                 }
               }
             }
@@ -51,7 +53,6 @@
                 $email = filter_input(INPUT_POST, "email");
                 $username = filter_input(INPUT_POST, 'username');
                 $password = filter_input(INPUT_POST, 'password');
-                $hash = password_hash($password, PASSWORD_DEFAULT);
                 
                     if ($firstname == '') {
                         $_SESSION['message'] = 'Enter your first name';
@@ -67,18 +68,27 @@
                         
                                         
                     if ($_SESSION['message'] == '') {
-                  
-                        $stmt = $db->prepare('INSERT INTO users (username, first_name, last_name, email, password) VALUES (:username, :firstname, :lastname, :email, :password)');
+                        $stmt = $db->prepare('INSERT INTO users (username, first_name, last_name, email, password) VALUES (:username, :firstname, :lastname, :email, MD5(:password))');
                         $stmt->execute(array(
                                 ':username' => $username,
                                 ':firstname' => $firstname,
                                 ':lastname' => $lastname,
                                 ':email' => $email,
-                                ':password' => $hash,
-                        ));
-                        $_SESSION['message'] = 'Registration successful';
+                                ':password' => $password,
+                            ));   
+                        }
+                        if(!preg_match("/@.*travelator\.com$/", $email)){ 
+                            
+                        }else{
+                        $db = Db::getInstance();
+                        $query = $db->prepare("CALL addPrivledges()");
+                        $query->execute();
+                        //INSERT SESSION AUTHOR HERE?
+                        }
+                        $_SESSION['message'] = "Registration successful. Click <a href='index.php?controller=pages&action=login'>here</a> to login.";
             }
           }
-        }
           
-    }
+        }
+       
+    //last inserted ID from PDO 

@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins");
 
-body {
-  font-family: "Poppins", sans-serif;
-  color: pink;
+body, heading {font-family: "Verdana", Georgia, Serif;}
+h1, h2, h3, h4, h5, h6ref, a {
+  font-family: "Playfair Display";
+  letter-spacing: 5px;
 }
 .search-txt {
   position: absolute;
@@ -42,7 +43,9 @@ body {
 .jumbotron {
   margin-bottom: 0;
 }
-
+#logo {
+    max-width: 100%
+}
 .search-btn > i {
   font-size: 30px;
 }
@@ -60,50 +63,59 @@ body {
   width: 0px;
   font-weight: bold;
 }
-.navbar {
-  margin-bottom: 0;
-  border-radius: 0;
+.navbar {font-family: "Verdana", Georgia, Serif;}
+.navbar h1, h2, h3, h4, h5, h6ref, a{
+  font-family: "Playfair Display";
+  letter-spacing: 5px;
 }
+
 ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 li {
-  display: inline;
+    display: inline;
 }
 
+
 footer {
-  background-color: lightsteelblue;
+/*  position: fixed;*/
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: gainsboro;
   color: white;
   padding: 15px 0 8px 0;
   height: 60px;
   margin-top: 30px;
 }
 
-a {
+/*a {
   color: palevioletred;
-}
+}*/
 /*.carousel-inner {
         max-height: 350px; 
 }*/
-.card {
-  min-height: 200px;
+.home-card {
+ 
+   max-height: 350px;
 }
 
-.card-img{
-     max-height: 200px;
+.home-card-img {
+     max-height: 350px;
 }
 
-.card-block {
+.home-card-block {
     vertical-align: middle;
 }
 
-.btn {
+#home-card-button {
     float: bottom;
 }
 /*.card img {
+
 max-width: 100%;
   max-height: 250px;
 }*/
@@ -112,30 +124,6 @@ max-width: 100%;
       max-height: 250px; 
 }*/
 
-#worldMap {
-  fill: #f4c3c2 !important;
-}
-
-path:hover,
-circle:hover {
-  stroke: #002868 !important;
-  stroke-width: 2px;
-  stroke-linejoin: round;
-  fill: #002868 !important;
-  cursor: pointer;
-}
-#info-box {
-  display: none;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  z-index: 1;
-  background-color: #ffffff;
-  border: 2px solid #bf0a30;
-  border-radius: 5px;
-  padding: 5px;
-  font-family: arial;
-}
 
 
 .home-categories {
@@ -145,6 +133,7 @@ circle:hover {
 
 .home-categories img {
   max-width: 100%;
+  min-height: 250px;
   max-height: 250px;
   position: relative;
   display: inline-block;
@@ -165,6 +154,7 @@ circle:hover {
 .home-categories:hover .home-cat-link {
   background-color: rgba(247, 246, 243, 1);
 }
+
 .overlay span {
   position: absolute;
   top: 50%;
@@ -174,6 +164,7 @@ circle:hover {
 }
 
 .home-cat-link {
+    vertical-align: middle;
   padding: 2px;
   background-color: rgba(247, 246, 243, 0.7);
 }
@@ -189,4 +180,91 @@ circle:hover {
 
 .invisible {
     display: none;
+}
+
+
+#worldMap {
+    fill: #F4C3C2 !important;
+}
+
+path:hover circle:hover {
+    stroke: #002868 !important;
+    stroke-width:2px;
+    stroke-linejoin: round;
+    fill: #002868 !important;
+    cursor: pointer;
+}
+
+#info-box {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  background-color: #ffffff;
+  border: 2px solid #BF0A30;
+  border-radius: 5px;
+  padding: 5px;
+  font-family: arial;
+}
+
+
+/*
+.countries:hover {
+    fill:red;
+}
+
+
+
+/*html, body*/
+  /*width: 100%*/
+  
+  /*-------Typeahead ---------*/
+.typeahead .tt-query,
+.typeahead .tt-hint {
+	margin-bottom: 0;
+}
+.tt-hint {
+	display: block;
+	width: 100%;
+	height: 38px;
+	padding: 8px 12px;
+	font-size: 14px;
+	line-height: 1.428571429;
+	color: #999;
+	vertical-align: middle;
+	background-color: #ffffff;
+	border: 1px solid #cccccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+	      transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+}
+.tt-dropdown-menu {
+	min-width: 160px;
+	margin-top: 2px;
+	padding: 5px 0;
+	background-color: #ffffff;
+	border: 1px solid #cccccc;
+	border: 1px solid rgba(0, 0, 0, 0.15);
+	border-radius: 4px;
+	-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+	background-clip: padding-box;
+
+}
+.tt-suggestion {
+	display: block;
+	padding: 3px 20px;
+}
+.tt-suggestion.tt-is-under-cursor {
+	color: #fff;
+	background-color: #428bca;
+}
+.tt-suggestion.tt-is-under-cursor a {
+	color: #fff;
+}
+.tt-suggestion p {
+	margin: 0;
 }

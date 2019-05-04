@@ -21,7 +21,7 @@ class PagesController {
       else { 
           require_once("models/authentication_model.php");
           Authentication::userLogin();
-          echo $_SESSION['message'] . "<br>";
+          echo "<p id='message'>". $_SESSION['message'] . "</p><br>";
       }
       
     }
@@ -29,7 +29,8 @@ class PagesController {
     public function logout() {
        if(isset($_SESSION['username'])){
            session_destroy();
-           echo "You have successfully logged out";
+            echo "<p id='message'>You have successfully logged out.</p>";
+
        }
 
     }
@@ -41,7 +42,7 @@ class PagesController {
             else {
                 require_once("models/authentication_model.php");
                 Authentication::userRegister();
-                echo $_SESSION['message'] . "<br>";
+                echo "<p id='message'>". $_SESSION['message'] . "</p><br>";
             }
     }
 } 
