@@ -4,7 +4,7 @@ body {
   font-family: "Poppins", sans-serif;
   color: pink;
 }
-.search-box {
+.search-txt {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -14,12 +14,12 @@ body {
   border-radius: 40px;
   padding: 10px;
 }
-.search-box:hover > .search-txt {
+.search-txt:hover > .search-txt {
   width: 240px;
   padding: 0 6px;
 }
 
-.search-box:hover > .search-btn {
+.search-txt:hover > .search-btn {
   background: white;
   color: black;
 }
@@ -79,6 +79,7 @@ footer {
   color: white;
   padding: 15px 0 8px 0;
   height: 60px;
+  margin-top: 30px;
 }
 
 a {
@@ -177,4 +178,15 @@ circle:hover {
   background-color: rgba(247, 246, 243, 0.7);
 }
 
+/*Comments/Replies CSS*/
+.reply-to-comment {
+    display: none;
+}
 
+.visible {
+    display: block;
+}
+
+.invisible {
+    display: none;
+}

@@ -19,11 +19,12 @@
                 $req = $db->prepare("SELECT * FROM users WHERE username = :username AND password = :password");
                 $req->bindParam(':username', $username);
                 $req->bindParam(':password', $password);
+                $req->bindParam(':userId', $userId);
                 if(isset($_POST['username'])&& $_POST['username']!=""){
-                $filteredUsername = filter_input(INPUT_POST,'username', FILTER_SANITIZE_SPECIAL_CHARS);
+                    $filteredUsername = filter_input(INPUT_POST,'username', FILTER_SANITIZE_SPECIAL_CHARS);
                 }
                 if(isset($_POST['password'])&& $_POST['password']!=""){
-                $filteredPassword = filter_input(INPUT_POST,'password', FILTER_SANITIZE_SPECIAL_CHARS);
+                    $filteredPassword = filter_input(INPUT_POST,'password', FILTER_SANITIZE_SPECIAL_CHARS);
                 }
                 $username = $filteredUsername;
                 $password = $filteredPassword;
@@ -31,6 +32,7 @@
                 $count = $req->rowCount();
                 if ($count > 0) {
                     $_SESSION["username"] = filter_input(INPUT_POST, 'username');
+                    $_SESSION["userId"] = $userId;
                     $_SESSION['message'] = "Login success! Hello ". $_SESSION["username"];
                 } else {
                     $_SESSION['message'] = "Wrong email/password combination :(";
