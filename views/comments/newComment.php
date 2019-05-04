@@ -1,4 +1,5 @@
 
+<h3> Comments </h3>
 <div class="comment-item" style="display: flex; flex-flow: row wrap;">
     <div class="avatar" >
         <img alt="avatar" height="50" width="50" src="<?php echo $comment->avatar; ?>">
@@ -32,3 +33,4 @@
 
     </div>
 </div>
+
