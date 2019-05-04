@@ -83,6 +83,17 @@ class PostController {
       require_once('views/pages/gallery.php');
       
     }
+        public function readLocation() {
+        if (!isset($_GET['location']))
+            return call('pages', 'error');
+        try {
+            // we use the given id to get the correct post
+            $posts = Post::findCategory($_GET['location']);
+            require_once('views/posts/readAll.php');
+        } catch (Exception $ex) {
+            return call('pages', 'error');
+        }
+    }
 
     
 }
