@@ -193,5 +193,21 @@ class Post {
         }
         return $list;
     }
+    
+        public static function searchLocation($searchParam) {
+        $db = DB::getInstance();
+        $stmt = $db->prepare("SELECT posts.id, posts.title FROM posts
+        INNER JOIN location ON posts.location_id = location.ID
+        WHERE  CONCAT(city, country, continent) LIKE (?)");
+        
+        $stmt->execute(['%'.$searchParam.'%']);
+        $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        
+        $posts = [];
+        foreach ($rows as $row){
+            array_push($posts, new Search($row['id'], $row['title']));
+        }
+        return $posts;
+    }
 
 }
