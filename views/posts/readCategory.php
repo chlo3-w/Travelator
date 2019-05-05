@@ -1,5 +1,5 @@
 
-<H1>Here is a list of posts about <?php: echo $posts{0}->category;?></H1>
+<h1>Here is a list of posts about <?php: echo $posts{0}->category;?></h1>
 
 <div class='container'>
     <div class="row">
