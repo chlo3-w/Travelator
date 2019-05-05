@@ -1,9 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins");
 
-body, heading {font-family: "Verdana", Georgia, Serif;}
-h1, h2, h3, h4, h5, h6ref, a {
+p, body {font-family: "Verdana", Georgia, Serif;}
+
+h1, h2, h3, h4, h5, h6, ref, a {
   font-family: "Playfair Display";
   letter-spacing: 5px;
+  color: black;
 }
 .search-txt {
   position: absolute;
@@ -25,27 +27,16 @@ h1, h2, h3, h4, h5, h6ref, a {
   color: black;
 }
 
-.search-btn {
-  color: #e84118;
-  float: right;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: #555;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: 0.4s;
-  color: white;
-  cursor: pointer;
-}
-
 .jumbotron {
   margin-bottom: 0;
+  margin-top: 0;
+  padding: 0;
 }
+
 #logo {
-    max-width: 100%
+    max-width: 100%;
 }
+
 .search-btn > i {
   font-size: 30px;
 }
@@ -63,20 +54,31 @@ h1, h2, h3, h4, h5, h6ref, a {
   width: 0px;
   font-weight: bold;
 }
-.navbar {font-family: "Verdana", Georgia, Serif;}
-.navbar h1, h2, h3, h4, h5, h6ref, a{
-  font-family: "Playfair Display";
-  letter-spacing: 5px;
+
+#navbar-Top a {
+ color: black;
+}
+
+#navbar-Top { 
+    background-color: gainsboro;
+}
+
+#navbar-Bottom{
+    background-color: #E1E1E2;
+   
 }
 
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    
 }
 
 li {
     display: inline;
+    padding-left: 5px;
+   padding-right: 5px;
 }
 
 
@@ -88,16 +90,9 @@ footer {
   background-color: gainsboro;
   color: white;
   padding: 15px 0 8px 0;
-  height: 60px;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
-/*a {
-  color: palevioletred;
-}*/
-/*.carousel-inner {
-        max-height: 350px; 
-}*/
 .home-card {
  
    max-height: 350px;
@@ -114,17 +109,6 @@ footer {
 #home-card-button {
     float: bottom;
 }
-/*.card img {
-
-max-width: 100%;
-  max-height: 250px;
-}*/
-
-/*.card-block img {
-      max-height: 250px; 
-}*/
-
-
 
 .home-categories {
   padding-top: 15px;
@@ -166,7 +150,9 @@ max-width: 100%;
 .home-cat-link {
     vertical-align: middle;
   padding: 2px;
+  color: #002868;
   background-color: rgba(247, 246, 243, 0.7);
+  font-size: 25px;
 }
 
 /*Comments/Replies CSS*/
@@ -182,44 +168,35 @@ max-width: 100%;
     display: none;
 }
 
-
-#worldMap {
-    fill: #F4C3C2 !important;
+.worldMap, a{
+  fill: #D4D8D8; 
+  display: block;
+  align-items: center;
+  position: static;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-path:hover circle:hover {
-    stroke: #002868 !important;
+.worldMap a:hover {
+    stroke: #9BBDF9;
     stroke-width:2px;
     stroke-linejoin: round;
-    fill: #002868 !important;
+    fill: #9BBDF9;
     cursor: pointer;
 }
-
-#info-box {
-  display: none;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  z-index: 1;
-  background-color: #ffffff;
-  border: 2px solid #BF0A30;
-  border-radius: 5px;
-  padding: 5px;
-  font-family: arial;
+.mapContainer{
+    min-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+   
 }
 
 
-/*
-.countries:hover {
-    fill:red;
-}
-
-
-
-/*html, body*/
-  /*width: 100%*/
   
-  /*-------Typeahead ---------*/
+  /*-------Typerhead ---------*/
 .typeahead .tt-query,
 .typeahead .tt-hint {
 	margin-bottom: 0;
