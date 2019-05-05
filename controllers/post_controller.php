@@ -71,7 +71,7 @@ class PostController {
         try {
             // we use the given id to get the correct post
             $posts = Post::findCategory($_GET['category']);
-            require_once('views/posts/readAll.php');
+            require_once('views/posts/readCategory.php');
         } catch (Exception $ex) {
             return call('pages', 'error');
         }
@@ -88,8 +88,8 @@ class PostController {
             return call('pages', 'error');
         try {
             // we use the given id to get the correct post
-            $posts = Post::findCategory($_GET['location']);
-            require_once('views/posts/readAll.php');
+            $posts = Post::searchLocation($_GET['location']);
+            require_once('views/posts/readLocation.php');
         } catch (Exception $ex) {
             return call('pages', 'error');
         }
