@@ -19,11 +19,12 @@
                 $req = $db->prepare("SELECT * FROM users WHERE username = :username AND password = MD5(:password)");
                 $req->bindParam(':username', $username);
                 $req->bindParam(':password', $password);
+                $req->bindParam(':userId', $userId);
                 if(isset($_POST['username'])&& $_POST['username']!=""){
-                $filteredUsername = filter_input(INPUT_POST,'username', FILTER_SANITIZE_SPECIAL_CHARS);
+                    $filteredUsername = filter_input(INPUT_POST,'username', FILTER_SANITIZE_SPECIAL_CHARS);
                 }
                 if(isset($_POST['password'])&& $_POST['password']!=""){
-                $filteredPassword = filter_input(INPUT_POST,'password', FILTER_SANITIZE_SPECIAL_CHARS);
+                    $filteredPassword = filter_input(INPUT_POST,'password', FILTER_SANITIZE_SPECIAL_CHARS);
                 }
                 $username = $filteredUsername;
                 $password = $filteredPassword;

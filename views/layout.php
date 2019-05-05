@@ -7,6 +7,8 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="views/css/stylesheet.css">
+        <link rel="stylesheet" href="views/css/comments.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" media="all"> 
         <link rel="stylesheet" href="views/css/stylesheet.css">
@@ -82,11 +84,31 @@
                     echo "<li class='nav-item'>
       <a class='nav-link' href='?controller=post&action=create'>Add new post</a>
     </li>";
-                }
-                ?>
-            </ul>
-        </nav>
+                    }
+                    ?>
+                    <?php
+                    if (!isset($_SESSION['username'])) {
+                        echo "<li class='nav-item'>";
+                        echo "<a class='nav-link' href='?controller=pages&action=login'>Login</a></li>";
+                    } else {
+                        echo "<li class='nav-item'>";
+                        echo "<a class='nav-link' href='?controller=pages&action=logout'>Logout</a></li>";
+                    }
+                    ?>
+                    <!--<li><a href="#search">Search...</a></li>-->
+                </ul>
+            </nav>
 
+
+        </header>
+
+
+        <?php
+//        if (isset($_SESSION['username'])) {
+//            echo "<li class='nav-item'>";
+//            echo "<a class='nav-link' href='?controller=pages&action=logout'>Logout</a></li>";
+//        }
+//        ?>
 
         <br>
 
@@ -95,61 +117,31 @@
                 <?php require_once('routes.php'); ?>
             </div>
         </div>
- 
-<style>
-.footer {
-   
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   background-color: lightgray;
-   color: white;
-   text-align: center;
-}
-</style>
-      
-        <div class="footer">
-<!--            <div class="w3-col s4 w3-justify">-->
-                <h4>Connect with us</h4>
+        <footer class="container-fluid text-center" style="background-color: lightsteelblue; padding: 5px">
+            <div class="footer">
+                <div class="w3-col s4 w3-justify">
+                    <h4>Connect with us</h4>
 
-                <p><i class="fa fa-fw fa-envelope"></i> hello@Travelator.com</p>
+                    <p><i class="fa fa-fw fa-envelope"></i> hello@Travelator.com</p>
 
-                <br>
-               
-                <i class="fa fa-facebook-official w3-hover-opacity w3-extra large"></i>
-                <i class="fa fa-instagram w3-hover-opacity w3-extra large"></i>
-                <i class="fa fa-snapchat w3-hover-opacity w3-extra large"></i>
-                <i class="fa fa-pinterest-p w3-hover-opacity w3-extra large"></i>
-                <i class="fa fa-twitter w3-hover-opacity w3-extra large"></i>
-                <i class="fa fa-linkedin w3-hover-opacity w3-extra large"></i>
-            </div>
-        <script>
-            var blogPosts = new Bloodhound({
-                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
-                queryTokenizer: Bloodhound.tokenizers.whitespace,
-                remote: {
-                    url: 'http://localhost/Travelator/api/search.php?query=%QUERY',
-                    wildcard: '%QUERY'
-                }
-            });
-            $('.typeahead').typeahead(null, {
-                name: 'blog-posts',
-                display: 'title',
-                source: blogPosts
-            });
-
-            $('.typeahead').on('typeahead:selected', function (evt, item) {
-                window.location.href = 'http://localhost/Travelator/index.php/?controller=post&action=read&id=' + item.id;
-            });
-        </script>
-
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                    <br>
+                    <i class="fa fa-facebook-official w3-hover-opacity w3-extra large"></i>
+                    <i class="fa fa-instagram w3-hover-opacity w3-extra large"></i>
+                    <i class="fa fa-snapchat w3-hover-opacity w3-extra large"></i>
+                    <i class="fa fa-pinterest-p w3-hover-opacity w3-extra large"></i>
+                    <i class="fa fa-twitter w3-hover-opacity w3-extra large"></i>
+                    <i class="fa fa-linkedin w3-hover-opacity w3-extra large"></i>
+                </div>
+                <p>Copyright 2019</p>
+        </footer>
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script type="text/javascript" src="views/js/jqBootstrapValidation.js"></script>
         <script src="views/js/jquery.validate.js"></script>
-        <script src="views/js/main.js" type="text/javascript"></script>
+        <script src="views/js/main.js"></script>
+        <script src="views/js/search.js"></script>
+        <script src="views/js/comments.js"></script>
 
         <script>
 //TEXT EDITOR    

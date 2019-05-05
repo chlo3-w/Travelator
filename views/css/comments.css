@@ -1,0 +1,12 @@
+.allComments ul {
+    list-style-type: none;
+    padding-left: 40px;
+}
+
+.comment-item {
+    margin-bottom: 20px;
+}
+
+.comment-item .avatar img {
+    border-radius: 50%;
+}

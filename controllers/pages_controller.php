@@ -5,7 +5,7 @@ class PagesController {
 
     public function home() {
        
-        require_once('models/pages.php');
+        require_once('models/pages_model.php');
     $home = Pages::readHomeData();
       require_once('views/pages/home.php');
     }
@@ -19,7 +19,7 @@ class PagesController {
           require_once('views/pages/login.php');
       }
       else { 
-          require_once("models/authentication.php");
+          require_once("models/authentication_model.php");
           Authentication::userLogin();
           echo "<p id='message'>". $_SESSION['message'] . "</p><br>";
       }
@@ -40,7 +40,7 @@ class PagesController {
                 require_once 'views/pages/register.php';
             }
             else {
-                require_once("models/authentication.php");
+                require_once("models/authentication_model.php");
                 Authentication::userRegister();
                 echo "<p id='message'>". $_SESSION['message'] . "</p><br>";
             }

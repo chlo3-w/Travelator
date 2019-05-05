@@ -14,7 +14,7 @@ function call($controller, $action) {
         default:
             //for all data-driven pages use a specific Controller class
             //we need the model to query the database later in the process
-            require_once("models/{$controller}.php");
+            require_once("models/{$controller}_model.php");
             $controllerClassName = $controller . 'Controller';
             $controller = new $controllerClassName();
             break;
@@ -27,7 +27,7 @@ function call($controller, $action) {
 // Add an entry for each new controller and its actions
 $controllers = array('pages' => ['home', 'error', 'login', 'logout', 'register'],
                     'post' => ['readAll', 'read', 'create', 'update', 'delete', 'readCategory','gallery', 'readLocation'],
-                    'comments' => ['read']
+                    'comments' => ['display']
 );
 
 
@@ -42,6 +42,6 @@ if (array_key_exists($controller, $controllers)) {
         call('pages', 'error');
     }
 } else {
-    call('pages', 'error');
+   call('pages', 'error');
 }
 ?>

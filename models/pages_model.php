@@ -4,7 +4,7 @@ class Pages {
   
         public static function readHomeData() {
         $list = [];
-           require_once('models/post.php');
+           require_once('models/post_model.php');
         $db = Db::getInstance();
         $req = $db->query(
                'SELECT * FROM posts 

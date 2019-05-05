@@ -3,25 +3,20 @@ require_once('models/comments_model.php');
 
 class CommentsController {
 
-    public function read($id) {
-//        if (!isset($_GET['id']))
-//        {
-//            return call('pages', 'error');
-//        } else {
-//
-//            try {
-//                $comment = Comment::displayComments($_GET['id']);
-//                require_once '../views/comments/displayOne.php';
-//            } catch (Exception $ex) {
-//                return call('pages', 'error');
-//            }
-//        }
-//    }
-       
+    public function display($id) {
+        
+        if(!empty($_POST)) {
+            $parentId = NULL;
+            if (isset ($_POST['parentId'])) {
+                $parentId = ($_POST['parentId']);
+            }
+            
+            Comment::createComment(2, $id, $_POST['body'], $parentId); 
+        } 
         $allComments = Comment::readComments($id);
-        foreach ($allComments as $comment) {
-            require('views/comments/displayOne.php');
-        }
+        require_once('views/comments/newComment.php');
+        
+        require_once('views/comments/displayThread.php');
     }
 
 }
