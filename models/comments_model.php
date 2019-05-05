@@ -8,49 +8,59 @@ class Comment {
     public $commentBody;
     public $id;
     public $postId;
+    public $parentId;
+    public $replies;
 
-    public function __construct($id, $postId, $firstName, $lastName, $avatar, $commentBody) {
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->avatar = $avatar;
-        $this->commentBody = $commentBody;
-        $this->id = $id;
-        $this->postId = $postId;
+    public function __construct($row) {
+        $this->firstName = $row['first_name'];
+        $this->lastName = $row['last_name'];
+        $this->avatar = $row['avatar'];
+        $this->commentBody = $row['commentBody'];
+        $this->id = $row['ID'];
+        $this->postId = $row['postID'];
+        $this->parentId = $row['parentID'];
+        $this->replies = [];
     }
 
     public static function readComments($postId) {
-        $list = [];
         $db = Db::getInstance();
-        $stmt = $db->prepare('SELECT comments.ID, comments.postId, comments.userId, comments.commentBody, users.avatar, users.first_name, users.last_name
+        $stmt = $db->prepare('SELECT comments.ID, comments.postID, comments.userID, comments.commentBody, comments.parentID, users.avatar, users.first_name, users.last_name
                             FROM comments
                             INNER JOIN users 
                             ON comments.userID = users.user_id
-                            INNER JOIN posts
-                            ON comments.postID = posts.id
-                            WHERE comments.postID = ?');
+                            WHERE comments.postID = ? AND comments.parentID IS NULL
+                            ORDER BY comments.ID');
         $stmt->execute([$postId]);
         $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         $allComments = [];
+        
         foreach ($rows as $row) {
-            array_push($allComments, new Comment($row['ID'], $row['postId'], $row['first_name'], $row['last_name'], $row['avatar'], $row['commentBody']));
+            $comment = new Comment($row);
+            $comment->replies = Comment::findReplies($comment->id);
+            array_push($allComments, $comment);
         }
         return $allComments;
     }
-
-    public static function getOne($commentId) {
-        $list = [];
+    
+    public static function findReplies($commentID) {
         $db = Db::getInstance();
-        $stmt = $db->prepare('SELECT comments.ID, comments.postId, comments.userId, comments.commentBody, users.avatar, users.first_name, users.last_name
+        $stmt = $db->prepare('SELECT comments.ID, comments.postID, comments.userID, comments.commentBody, comments.parentID, users.avatar, users.first_name, users.last_name
                             FROM comments
                             INNER JOIN users 
                             ON comments.userID = users.user_id
-                            WHERE comments.ID = ?');
-        $stmt->execute([$commentId]);
-        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
-        return new Comment($row['ID'], $row['postId'], $row['first_name'], $row['last_name'], $row['avatar'], $row['commentBody']);
+                            WHERE comments.parentID = ?');
+        $stmt->execute([$commentID]);
+        $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        $allreplies = [];
+        foreach ($rows as $row) {
+            $reply = new Comment($row);
+            $reply->replies = Comment::findReplies($reply->id);
+            array_push($allreplies, $reply);
+        }
+        return $allreplies;
     }
 
-    public static function createComment($postId, $parentId, $userId, $body) {
+    public static function createComment($userId, $postId, $body, $parentId) {
         $db = DB::getInstance();
         $req = $db->prepare("
             Insert into comments(
@@ -70,13 +80,6 @@ class Comment {
         $req->bindParam(':commentBody', $body);
         $req->bindParam(':parentId', $parentId);
         $req->execute();
-        
-//        $reqAdded = $db->prepare("SELECT LAST_INSERT_ID();");
-//        $reqAdded->execute();
-//        $result = $reqAdded->fetch();
-//
-//        $latestComment = Comment::getOne((int)$result);
-//            
-//        return $latestComment;
     }
+
 }

@@ -132,6 +132,7 @@
         <script src="views/js/jquery.validate.js"></script>
         <script src="views/js/main.js"></script>
         <script src="views/js/search.js"></script>
+        <script src="views/js/comments.js"></script>
 
         <script>
 //TEXT EDITOR    

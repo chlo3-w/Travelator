@@ -15,7 +15,6 @@
             <form class="reply-form" method="post">
                 <input type="text" class="reply" name="body">
                 <input type="hidden" name="parentId" value="<?php echo $comment->id; ?>">
-                <input type="hidden" name="postId" value="<?php echo $comment->postId; ?>">
                 <input type="submit" class="send-reply" value="Submit">
             </form>
         </div>
