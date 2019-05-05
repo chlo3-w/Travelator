@@ -1,4 +1,5 @@
 <html>  
+<div class="text-center">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -68,8 +69,6 @@
         </div>
     </div>
 
-
-
     <div class="container">
         <div class="row">
             <div class="col-md home-categories">
@@ -98,7 +97,8 @@
             </div>
         </div>
     </div>
-
+    
+    
     <div>
         <div>
             <div id="info-box"></div>
@@ -106,5 +106,5 @@
         </div>
     </div>
 
-
+    </div>
 </html>

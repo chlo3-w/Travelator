@@ -9,99 +9,98 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="views/css/stylesheet.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"  type='text/css'>
         <title>Travel Blog</title>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
-        <script language="javascript" type="text/javascript" src="views/js/ckeditor/ckeditor.js"></script>
+        <script language="javascript" type="text/javascript" src="views/js/ckeditor/ckeditor.js"></script><!--        <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&layout=button_count&size=small&width=88&height=20&appId" width="88" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>-->
     </head>
     <body>
-        <header>
-            <div class="jumbotron">
-
-
-                <nav class="navbar navbar-default navbar-fixed-top">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span> 
-                            </button>
-                            <a class="navbar-brand" href="#glyphicon glyphicon-home"</a>
-
-                            <p><span class="glyphicon glyphicon-home"></span></p> 
+         <!-- Top Header Area -->
+    <div class="top_header_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-4 col-sm-3">
+                    <!--  Top Social bar start -->
+                    <div class="search-hidden-form">
+                            <form action="#" method="get">
+                                <input type="search" name="search" id="search-anything" placeholder="Search">
+                                <input type="submit" value="" class="d-none">
+                                <span class="searchBtn"><i class="fa fa-search" aria-hidden="true"></i></span>
+                            </form>
                         </div>
-                        <div class="collapse navbar-collapse" id="myNavbar">
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a href="#about">About</a></li>
-                                <li><a href="#login">Login / Register</a></li>
-                                      
+                </div>
+                <!--  Login Register Area -->
+                <div class="col-8 col-sm-9">
+                    <div class="signup-search-area d-flex align-items-center justify-content-end">
+                        <div class="login_register_area d-flex">
+                            <div class="login">
+                                <?php
+                                if (!isset($_SESSION['username'])) {
+                                    echo "<a href='?controller=pages&action=login'>Login</a>";
+                                } else {
+                                    echo "<a href='?controller=pages&action=logout'>Logout</a>";
+                                }
+                                ?>
+                            </div>
+                            <div class="register">
+                                <a href="?controller=pages&action=register">Register</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Top Header Area -->
+     <!-- Header Area-->
+    <header class="header_area">
+        <div class="container">
+            <div class="row">
+                <!-- Logo Area Start -->
+                <div class="col-12">
+                    <div class="logo_area text-center">
+                       <img id="logo" class="img-responsive" src="views/images/travelatortransparent.jpg" alt="Travelator">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <nav class="navbar navbar-expand-lg">
+                        <h5><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#travelator-nav" aria-controls="travelator-nav" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars" aria-hidden="true"></i> Menu</h5></button>
+                        <!-- Menu Area Start -->
+                        <div class="collapse navbar-collapse justify-content-center" id="travelator-nav">
+                            <ul class="navbar-nav" id="travelator-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.php">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="?controller=post&action=readAll">Posts</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="?controller=post&action=gallery">Gallery</a>
+                                </li>
+                                <?php
+                                if(isset($_SESSION['author']) == 1) {
+                                echo "<li class='nav-item'>
+                                  <a class='nav-link' href='?controller=post&action=create'>Add new post</a>
+                                </li>";}
+                                ?>
                             </ul>
                         </div>
-
-                    </div>
-
-                </nav>
-                 <img id="logo" class="img-responsive" src="views/images/travelatortransparent.jpg" alt="Travelator">
+                    </nav>
+                </div>
             </div>
-           
-
-            <!--        <div class="jumbotron text-center">
-                        <h2>Travelator</h2>
-                    </div>-->
-
-            <nav class="navbar navbar-default navbar-expand-sm bg-light justify-content-center">
-                <input type="text" class="typeahead" placeholder="City, Country or Continent"> 
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="?controller=post&action=readAll">Posts</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="?controller=post&action=create">Add new post</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="?controller=post&action=gallery">Gallery</a>
-                    </li>
-                    <?php
-                    if (isset($_SESSION['author']) == 1) {
-                        echo "<li class='nav-item'>
-      <a class='nav-link' href='?controller=post&action=create'>Add new post</a>
-    </li>";
-                    }
-                    ?>
-                    <?php
-                    if (!isset($_SESSION['username'])) {
-                        echo "<li class='nav-item'>";
-                        echo "<a class='nav-link' href='?controller=pages&action=login'>Login</a></li>";
-                    } else {
-                        echo "<li class='nav-item'>";
-                        echo "<a class='nav-link' href='?controller=pages&action=logout'>Logout</a></li>";
-                    }
-                    ?>
-                    <li><a href="#search">Search...</a></li>
-                </ul>
-            </nav>
-
-
-        </header>
-
-
-        <?php
-        if (isset($_SESSION['username'])) {
-            echo "<li class='nav-item'>";
-            echo "<a class='nav-link' href='?controller=pages&action=logout'>Logout</a></li>";
-        }
-        ?>
-
+        </div>
+    </header>
         <br>
 
         <div id="layout" class="container-fluid">
-            <div class="col-sm-12 text-center">  
+            <div class="col-sm-12">  
                 <?php require_once('routes.php'); ?>
             </div>
         </div>
