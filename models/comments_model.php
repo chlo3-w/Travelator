@@ -48,7 +48,8 @@ class Comment {
                             FROM comments
                             INNER JOIN users 
                             ON comments.userID = users.user_id
-                            WHERE comments.parentID = ?');
+                            WHERE comments.parentID = ?
+                            ORDER BY comments.ID');
         $stmt->execute([$commentID]);
         $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         $allreplies = [];
