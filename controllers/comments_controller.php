@@ -4,17 +4,19 @@ require_once('models/comments_model.php');
 class CommentsController {
 
     public function display($id) {
+        
         if(!empty($_POST)) {
-            //echo "POST=";
-            //print_r($_POST);
+            $parentId = NULL;
+            if (isset ($_POST['parentId'])) {
+                $parentId = ($_POST['parentId']);
+            }
             
-            Comment::createComment($_POST['postId'], $_POST['parentId'], 2, $_POST['body']); 
+            Comment::createComment(2, $id, $_POST['body'], $parentId); 
         } 
         $allComments = Comment::readComments($id);
         require_once('views/comments/newComment.php');
-        foreach ($allComments as $comment) {
-            require('views/comments/displayComments.php');
-        }
+        
+        require_once('views/comments/displayThread.php');
     }
 
 }

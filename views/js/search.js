@@ -1,4 +1,4 @@
-window.onload = function() {
+$(document).ready(function() {
     console.log('load');
     var blogPosts = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
@@ -17,4 +17,4 @@ window.onload = function() {
     $('.typeahead').on('typeahead:selected', function (evt, item) {
         window.location.href = 'http://localhost/Travelator/index.php/?controller=post&action=read&id=' + item.id;
     });    
-};
+});
