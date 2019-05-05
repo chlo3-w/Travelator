@@ -1,3 +1,5 @@
+<?php if(isset($location)){echo $location;} ?>
+<?php if(isset($category)){echo $category;} ?>
 <p>Here is a list of all posts:</p>
 
 <div class='container'>

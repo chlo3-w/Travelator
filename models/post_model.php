@@ -195,19 +195,22 @@ class Post {
     }
     
         public static function searchLocation($searchParam) {
+            $list=[];
         $db = DB::getInstance();
-        $stmt = $db->prepare("SELECT posts.id, posts.title FROM posts
-        INNER JOIN location ON posts.location_id = location.ID
+        $stmt = $db->prepare("SELECT * FROM posts
+        LEFT JOIN location 
+                            ON posts.location_id = location.ID 
+                            INNER JOIN category 
+                            ON posts.category_id = category.category_id
         WHERE  CONCAT(city, country, continent) LIKE (?)");
         
         $stmt->execute(['%'.$searchParam.'%']);
-        $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        
-        $posts = [];
-        foreach ($rows as $row){
-            array_push($posts, new Search($row['id'], $row['title']));
+        foreach ($stmt->fetchAll() as $post) {
+            //make sure that you have these variable in the f
+            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['city'], $post['country'], $post['continent'], $post['category']);
         }
-        return $posts;
+        return $list;
     }
+    
 
 }
