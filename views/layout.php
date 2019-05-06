@@ -12,6 +12,7 @@
        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
        <link rel="stylesheet" href="views/css/stylesheet.css">
        <link rel="stylesheet" href="views/css/comments.css">
+       <link rel="stylesheet" href="views/css/searchbar.css">
        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
        <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"  type='text/css'>
        <title>Travel Blog</title>
@@ -33,7 +34,7 @@
                     <!--  Top Social bar start -->
                     <div class="search-hidden-form">
                             <form action="#" method="get">
-                                <input type="text" class="typeahead" placeholder="Search location"> 
+                                <input type="text" class="typeahead" id="main-search" placeholder="Search location..."> 
 <!--                                <span class="searchBtn"><i class="fa fa-search" aria-hidden="true"></i></span>-->
                             </form>
                         </div>

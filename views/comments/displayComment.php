@@ -20,7 +20,7 @@
         <?php if (isset($_SESSION['username'])) { ?>
             <div>
                 <button 
-                    class="reply-btn" 
+                    class="comment-reply-btn" 
                     data-parent-id="<?php echo $comment->id; ?>"
                     data-post-id="<?php echo $comment->postId; ?>"
                     >

@@ -37,8 +37,8 @@
     color: darkgrey;
 }
 
-.reply-btn {
-    margin: 0px;
+.comment-reply-btn {
+    margin-bottom: 15px;
     border: 2px solid #000;
     border-radius: 15px;
     border-color: darkgrey;
