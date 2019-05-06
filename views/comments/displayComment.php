@@ -18,16 +18,17 @@
                 <input type="submit" class="send-reply" value="Submit">
             </form>
         </div>
-
-        <div>
-            <button 
-                class="reply-btn" 
-                data-parent-id="<?php echo $comment->id; ?>"
-                data-post-id="<?php echo $comment->postId; ?>"
-                >
-                Reply
-            </button>
-        </div>
+        <?php if (isset($_SESSION['username'])) { ?>
+            <div>
+                <button 
+                    class="reply-btn" 
+                    data-parent-id="<?php echo $comment->id; ?>"
+                    data-post-id="<?php echo $comment->postId; ?>"
+                    >
+                    Reply
+                </button>
+            </div>
+        <?php } ?>
 
     </div>
 </div>
