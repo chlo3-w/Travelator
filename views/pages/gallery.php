@@ -1,25 +1,20 @@
-<?php
-$dirname = "views/images/";
-$images = glob($dirname."*.jpeg");
-
-
-foreach($images as $image) {
-    echo '<div class="gallery">';
-    echo '<img style= "height:300px; padding:10px;" src="'.$image.'" /><br />';
-    echo '</div>';
-}
-
-?>
-
-<!-- Page Content -->
+    <div class="breadcumb-nav">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+                            <li class="breadcrumb-item active"><a>Gallery</a></li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+<br>
 <div class="container">
-
-  <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">Thumbnail Gallery</h1>
-
-  <hr class="mt-2 mb-5">
-
   <div class="row text-center text-lg-left">
-
       <?php  
         foreach($posts as $post) {
         echo '<div class="col-lg-3 col-md-4 col-6">';

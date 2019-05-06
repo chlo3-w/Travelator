@@ -21,8 +21,8 @@
                 <h4></h4>
 
                 <form class="new-comment-form" method="post">
-                    <input type="text" class="new-comment-body" name="body" placeholder="New comment...">
-                    <input type="submit" class="new-comment-submit" value="Submit">
+                    <input id="comment" type="text" class="new-comment-body" name="body" placeholder="New comment...">
+                    <input id="comment" type="submit" class="new-comment-submit" value="Submit">
                 </form>
 
             </div>
@@ -36,7 +36,7 @@
 <?php } else {
     ?>
 
-    <a class="comment-login-link" href="http://localhost/Travelator/index.php?controller=pages&action=login">Login to join the conversation...</a>
+    <a class="comment-login-link" href="?controller=pages&action=login">Login to join the conversation...</a>
 
     <?php
 }

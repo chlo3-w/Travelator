@@ -1,5 +1,5 @@
 
-<div class="allComments">
+<div id= "comments" class="allComments">
     <?php
 
     function displayReplies($replies) { ?>

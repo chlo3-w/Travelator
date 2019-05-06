@@ -4,7 +4,7 @@
 				<form method="post" id="login">
                                 <div class="row">
                                         <div class="col-sm-12 text-center">
-                                                <h1>Login to Travelator</h1>
+                                                <h1>Login</h1>
                                         </div>
                                 </div>
                                 <div class="row">

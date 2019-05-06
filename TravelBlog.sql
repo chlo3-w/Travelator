@@ -20,8 +20,8 @@ SET time_zone = "+00:00";
 
 --
 -- Database: `TravelBlog`
-CREATE DATABASE IF NOT EXISTS `TravelBlog` DEFAULT CHARACTER SET latin1 COLLATE latin1_general_ci;
-USE `TravelBlog`;
+CREATE DATABASE IF NOT EXISTS `TravelBlog4` DEFAULT CHARACTER SET latin1 COLLATE latin1_general_ci;
+USE `TravelBlog4`;
 --
 
 -- --------------------------------------------------------
