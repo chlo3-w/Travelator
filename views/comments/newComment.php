@@ -10,11 +10,12 @@
 
     <div class="comment-item" style="display: flex; flex-flow: row wrap;">
         <div class="avatar" >
-            <img alt="avatar" height="50" width="50" src="views/images/userProfiles/Sasha.jpeg">
+            <img alt="avatar" height="50" width="50" src="<?php echo ($_SESSION['avatar']); ?>">
         </div>
+        
         <div class="comment-content" style="padding-left: 10px;">
             <header class="comment-header">
-                <span>Sasha Massan</span>
+                <span><?php echo ($_SESSION['first_name'])." ".($_SESSION['last_name']); ?></span>
             </header>
 
             <div id="new-comment" class="new-comment">

@@ -38,6 +38,9 @@ class Authentication {
                     $_SESSION['author'] = $result['author'];
                     //INSERT SESSION AUTHOR HERE^^
                     $_SESSION['userId'] = $result['user_id'];
+                    $_SESSION['first_name'] = $result['first_name'];
+                    $_SESSION['last_name'] = $result['last_name'];
+                    $_SESSION['avatar'] = $result['avatar'];
                 } else {
                     $_SESSION['message'] = "Wrong email/password combination :( <br> Please <a href='index.php?controller=pages&action=login'>try again</a>!";
                 }
