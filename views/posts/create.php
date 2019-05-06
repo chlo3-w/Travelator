@@ -26,11 +26,11 @@
                 <div class="row">
                   <div class="col-sm-12">   
                    <div class="input-group mb-3">
-                    <select class="custom-select" id="inputGroupSelect02">
+                    <select class="custom-select" id="inputGroupSelect02" name="category">
                         <option selected>Choose...</option>
                             <?php
                             $db = Db::getInstance();
-                            $smt = $db->prepare('SELECT * FROM category');
+                            $smt = $db->prepare('SELECT * FROM category WHERE category_id in (1,2,3)');
                             $smt->execute();
                             $data = $smt->fetchAll();
                             foreach ($data as $row):

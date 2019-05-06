@@ -1,4 +1,5 @@
 <html>  
+<div class="text-center">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -11,7 +12,7 @@
                             <div class="col-md-6">
                                 <div class="home-card-block">
                                     <h4 class="card-title"><?php echo $home{0}->title; ?></h4>
-                                    <p class="card-text"><?php echo substr(html_entity_decode($home{0}->content), 0, 200) . "..."; ?></p>
+                                    <p class="card-text"><?php echo substr(html_entity_decode($home{0}->content), 0, 150) . "..."; ?></p>
                                     <a class="btn btn-light" id="home-card-button" href='?controller=post&action=read&id=<?php echo $home{0}->id; ?>'>Read More</a>
 
                                 </div>
@@ -30,7 +31,7 @@
                             <div class="col-md-6">
                                 <div class="home-card-block">
                                     <h4 class="card-title"><?php echo $home{1}->title; ?></h4>
-                                    <p class="card-text"><?php substr(html_entity_decode($home{1}->content), 0, 200) . "..."; ?></p>
+                                    <p class="card-text"><?php substr(html_entity_decode($home{1}->content), 0, 150) ."...";  ?></p>
                                     <a class="btn btn-light" id="home-card-button" href='?controller=post&action=read&id=<?php echo $home{1}->id; ?>'>Read More</a>
                                 </div>
                             </div>
@@ -48,7 +49,7 @@
                             <div class="col-md-6">
                                 <div class="home-card-block">
                                     <h4 class="card-title"><?php echo $home{2}->title; ?></h4>
-                                    <p class="card-text"><?php substr(html_entity_decode($home{2}->content), 0, 200) . "..."; ?></p>
+                                    <p class="card-text"><?php substr(html_entity_decode($home{2}->content), 0, 150) ."...";  ?></p>
                                     <a class="btn btn-light" id="home-card-button" href='?controller=post&action=read&id=<?php echo $home{2}->id; ?>'>Read More</a>
                                 </div>
                             </div>
@@ -67,10 +68,8 @@
             </a>
         </div>
     </div>
-
-
-
-    <div class="container">
+    <hr>
+<!--    <div class="container">
         <div class="row">
             <div class="col-md home-categories">
                 <img src="views/images/pascal burger.jpg">
@@ -98,12 +97,52 @@
             </div>
         </div>
     </div>
+   
+-->
 
+    	<!-- Banner -->
 
-
-
+	<div class="banner">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="banner_item align-items-center" style="background-image:url(views/images/barcelona.jpg)">
+						<div class="banner_category">
+							<a href="?controller=post&action=readCategory&category=food">FOOD</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="banner_item align-items-center" style="background-image:url(views/images/zealand.jpg)">
+						<div class="banner_category">
+							<a href="?controller=post&action=readCategory&category=adventure">ADVENTURE</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="banner_item align-items-center" style="background-image:url(views/images/singapore.jpg)">
+						<div class="banner_category">
+							<a href="?controller=post&action=readCategory&category=culture">CULTURE</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+        <hr>
+        <div class="new_arrivals">
+		<div class="container text-center">
+			<div class="row">
+				<div class="col text-center">
+					<div class="section_title new_arrivals_title">
+						<h2>Need inspiration?</h2>
+					</div>
+				</div>
+			</div>
+                    
+    
     <!-- Created for MapSVG plugin: http://mapsvg.com -->
-    <div class="container" id="mapContainer">
+    <div class="container img-fluid" id="mapContainer">
         <svg
             xmlns:mapsvg="http://mapsvg.com"
             xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -1155,7 +1194,14 @@
         </g>
         <text class="label" id="country-name" x="10" y="390"> </text>
         </svg>
-
-
+                </div>
+<!--    
+    <div>
+        <div>
+            <div id="info-box"></div>
+            <?php echo file_get_contents("views/images/Continents.svg") ?>
+        </div>
+    </div>-->
+                </div>
     </div>
 </html>

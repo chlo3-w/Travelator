@@ -65,13 +65,13 @@ class PostController {
     }
     
     
-    public function readCategory() {
+     public function readCategory() {
         if (!isset($_GET['category']))
             return call('pages', 'error');
         try {
             // we use the given id to get the correct post
             $posts = Post::findCategory($_GET['category']);
-            require_once('views/posts/readCategory.php');
+            require_once('views/posts/readAll.php');
         } catch (Exception $ex) {
             return call('pages', 'error');
         }

@@ -13,6 +13,7 @@
        <link rel="stylesheet" href="views/css/stylesheet.css">
        <link rel="stylesheet" href="views/css/comments.css">
        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+       <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet"  type='text/css'>
        <title>Travel Blog</title>
        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
@@ -24,79 +25,100 @@
         <title>Travel Blog</title>
     </head>
     <body>
-        <header>
-
-            <!--            <div class="jumbotron">-->
-            <nav class="navbar navbar-default navbar-expand-sm" id="navbar-Top">
-                <div class="container">
-                    <button type="button" class="navbar-toggle float-left" data-toggle="collapse" data-target="#myNavbar">
-                    </button>
-                    <a href="#">
-                        <span class="glyphicon glyphicon-home"></span></a>
-                    <ul class="navbar-nav float-right">
-                        <input type="text" class="typeahead" placeholder="Search location"> 
-                        <?php
-                        if (!isset($_SESSION['username'])) {
-                            echo "<li class='nav-item'>";
-                            echo "<a class='nav-link' href='?controller=pages&action=login'>Login</a></li>";
-                            echo "<li class='nav-item'>";
-                            echo "<a class='nav-link' href='?controller=pages&action=register'>Register</a></li>";
-                        } else {
-                            echo "<li class='nav-item'>";
-                            echo "<a class='nav-link' href='?controller=pages&action=logout'>Logout</a></li>";
-                        }
-                        ?>
-                    </ul>  
-                </div>
-            </nav>
-
-            <!--</div>-->
-        </header>
-
+            <!-- Top Header Area -->
+    <div class="top_header_area">
         <div class="container">
-            <img id="logo" class="img-responsive" src="views/images/travelatortransparent.jpg" alt="Travelator">
+            <div class="row">
+                <div class="col-4 col-sm-3">
+                    <!--  Top Social bar start -->
+                    <div class="search-hidden-form">
+                            <form action="#" method="get">
+                                <input type="text" class="typeahead" placeholder="Search location"> 
+<!--                                <span class="searchBtn"><i class="fa fa-search" aria-hidden="true"></i></span>-->
+                            </form>
+                        </div>
+                </div>
+                <!--  Login Register Area -->
+                <div class="col-8 col-sm-9">
+                    <div class="signup-search-area d-flex align-items-center justify-content-end">
+                        <div class="login_register_area d-flex">
+                            <div class="login">
+                                <?php
+                                if (!isset($_SESSION['username'])) {
+                                    echo "<a href='?controller=pages&action=login'>Login</a>";
+                                } else {
+                                    echo "<a href='?controller=pages&action=logout'>Logout</a>";
+                                }
+                                ?>
+                            </div>
+                            <div class="register">
+                                <a href="?controller=pages&action=register">Register</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+  <!-- Top Header Area -->
+     <!-- Header Area-->
+    <header class="header_area">
+        <div class="container">
+            <div class="row">
+                <!-- Logo Area Start -->
+                <div class="col-12">
+                    <div class="logo_area text-center">
+                       <img id="logo" class="img-responsive" src="views/images/travelatortransparent.jpg" alt="Travelator">
+                    </div>
+                </div>
+            </div>
 
-        <nav class="navbar navbar-default navbar-expand-sm justify-content-center" id="navbar-Bottom">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.php">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="?controller=post&action=readAll">Posts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="?controller=post&action=create">Add new post</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="?controller=post&action=gallery">Gallery</a>
-                </li>
-                <?php
-                if (isset($_SESSION['author']) == 1) {
-                    echo "<li class='nav-item'>
-      <a class='nav-link' href='?controller=post&action=create'>Add new post</a>
-    </li>";
-                }
-                ?>
-        </nav>
-
-        <br>
+            <div class="row">
+                <div class="col-12">
+                    <nav class="navbar navbar-expand-lg">
+                        <h5><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#travelator-nav" aria-controls="travelator-nav" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars" aria-hidden="true"></i> Menu</h5></button>
+                        <!-- Menu Area Start -->
+                        <div class="collapse navbar-collapse justify-content-center" id="travelator-nav">
+                            <ul class="navbar-nav" id="travelator-nav">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="index.php">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="?controller=post&action=readAll">Posts</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="?controller=post&action=gallery">Gallery</a>
+                                </li>
+                                <?php
+                                if(isset($_SESSION['author']) == 1) {
+                                echo "<li class='nav-item'>
+                                  <a class='nav-link' href='?controller=post&action=create'>Add new post</a>
+                                </li>";}
+                                ?>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
 
         <div id="layout" class="container-fluid">
-            <div class="col-sm-12 text-center">  
+            <div class="col-sm-12">  
                 <?php require_once('routes.php'); ?>
             </div>
         </div>
-        <footer class="container-fluid text-center">
+         <footer class="container-fluid text-center">
             <h4>Connect with us</h4>
             <p><i class="fa fa-fw fa-envelope"></i> hello@Travelator.com</p>
             <br>
-            <i class="fa fa-facebook-official w3-hover-opacity w3-extra large"></i>
-            <i class="fa fa-instagram w3-hover-opacity w3-extra large"></i>
-            <i class="fa fa-snapchat w3-hover-opacity w3-extra large"></i>
-            <i class="fa fa-pinterest-p w3-hover-opacity w3-extra large"></i>
-            <i class="fa fa-twitter w3-hover-opacity w3-extra large"></i>
-            <i class="fa fa-linkedin w3-hover-opacity w3-extra large"></i>
+            <i class="fa fa-facebook w3-hover-opacity fa-2x"></i>
+            <i class="fa fa-instagram w3-hover-opacity fa-2x"></i>
+            <i class="fa fa-snapchat w3-hover-opacity fa-2x"></i>
+            <i class="fa fa-pinterest-p w3-hover-opacity fa-2x"></i>
+            <i class="fa fa-twitter w3-hover-opacity fa-2x"></i>
+            <i class="fa fa-linkedin w3-hover-opacity fa-2x"></i>
             <p>Copyright 2019</p>
         </footer>
 

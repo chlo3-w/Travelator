@@ -16,7 +16,7 @@ class Pages {
      
         foreach ($req->fetchAll() as $post) {
 
-            $home[] = new Post($post['id'], $post['title'], $post['content'], $post['city'], $post['country'], $post['continent'], $post['category']);
+            $home[] = new Post($post['id'], $post['title'], $post['content'], $post['city'], $post['country'], $post['continent'], $post['category'], $post['create_date']);
 
         }
         return $home;

@@ -9,8 +9,9 @@ class Post {
     public $country;
     public $continent;
     public $category;
+    public $create_date;
 
-    public function __construct($id, $title, $content, $city, $country, $continent, $category) {
+    public function __construct($id, $title, $content, $city, $country, $continent, $category, $create_date) {
         $this->id = $id;
         $this->title = $title;
         $this->content = $content;
@@ -18,6 +19,7 @@ class Post {
         $this->country = $country;
         $this->continent = $continent;
         $this->category = $category;
+        $this->create_date = $create_date;
     }
 
     public static function all() {
@@ -32,7 +34,7 @@ class Post {
                         ON posts.category_id = category.category_id');
         // we create a list of Product objects from the database results
         foreach ($req->fetchAll() as $post) {
-            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['city'], $post['country'], $post['continent'], $post['category']);
+            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['city'], $post['country'], $post['continent'], $post['category'], $post['create_date']);
         }return $list;
     }
 
@@ -50,7 +52,7 @@ class Post {
         $req->execute(array('id' => $id));
         $post = $req->fetch();
         if ($post) {
-            return new Post($post['id'], $post['title'], $post['content'], $post['city'], $post['country'], $post['continent'], $post['category']);
+            return new Post($post['id'], $post['title'], $post['content'], $post['city'], $post['country'], $post['continent'], $post['category'], $post['create_date']);
         } else {
 //replace with a more meaningful exception
             throw new Exception("No post returned, click <a href='/Travelator/index.php'>here</a> to go back to the homepage.");
@@ -189,7 +191,7 @@ class Post {
    
         foreach ($req->fetchAll() as $post) {
             //make sure that you have these variable in the f
-            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['city'], $post['country'], $post['continent'], $post['category']);
+            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['city'], $post['country'], $post['continent'], $post['category'], $post['create_date']);
         }
         return $list;
     }
@@ -207,7 +209,7 @@ class Post {
         $stmt->execute(['%'.$searchParam.'%']);
         foreach ($stmt->fetchAll() as $post) {
             //make sure that you have these variable in the f
-            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['city'], $post['country'], $post['continent'], $post['category']);
+            $list[] = new Post($post['id'], $post['title'], $post['content'], $post['city'], $post['country'], $post['continent'], $post['category'], $post['create_date']);
         }
         return $list;
     }
