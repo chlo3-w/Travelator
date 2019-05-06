@@ -14,14 +14,13 @@
     
 }
 
-
 .allComments ul {
     list-style-type: none;
-    padding-left: 40px;
+    padding-left: 55px;
 }
 
 .comment-item {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 
 .comment-item .avatar img {
@@ -39,7 +38,7 @@
 }
 
 .reply-btn {
-    margin: 10px;
+    margin: 0px;
     border: 2px solid #000;
     border-radius: 15px;
     border-color: darkgrey;
@@ -82,4 +81,11 @@ input[type=submit] {
     padding-left: 20px;
     padding-right: 20px;
     float: right;
+}
+
+.comment-login-link {
+    font-family: "Playfair Display";
+    letter-spacing: 3px;
+    color: #0066cc;
+    text-decoration: underline;
 }
