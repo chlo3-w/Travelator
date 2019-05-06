@@ -15,6 +15,6 @@ $(document).ready(function() {
     });
     
     $('.typeahead').on('typeahead:selected', function (evt, item) {
-        window.location.href = 'http://localhost/Travelator/index.php/?controller=post&action=read&id=' + item.id;
+        window.location.href = 'http://localhost/Travelator/index.php?controller=post&action=read&id=' + item.id;
     });    
 });
