@@ -268,8 +268,8 @@ textarea{
 
   
   /*-------Typerhead ---------*/
-.typeahead .tt-query,
-.typeahead .tt-hint {
+.twitter-typeahead .tt-query,
+.twitter-typeahead .tt-hint {
 	margin-bottom: 0;
 }
 .tt-hint {
@@ -289,7 +289,7 @@ textarea{
 	-webkit-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 	      transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
-.tt-dropdown-menu {
+.tt-menu {
 	min-width: 160px;
 	margin-top: 2px;
 	padding: 5px 0;
@@ -306,7 +306,7 @@ textarea{
 	display: block;
 	padding: 3px 20px;
 }
-.tt-suggestion.tt-is-under-cursor {
+tt-suggestion:hover {
 	color: #fff;
 	background-color: #428bca;
 }
