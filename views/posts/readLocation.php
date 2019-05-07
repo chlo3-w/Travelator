@@ -1,6 +1,3 @@
-
-<h1>Posts from <?php: echo $posts{0}->continent;?></h1>
-
 <div class="breadcumb-nav">
         <div class="container">
             <div class="row">
@@ -17,8 +14,10 @@
     </div>
 <br>
 <div class="text-center">
+    <h1>Posts from <?php: echo $posts{0}->continent;?></h1><br>
 <div class='container'>
     <div class="row">
+
         <?php
         $i = 0;
         foreach ($posts as $post) {

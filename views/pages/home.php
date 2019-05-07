@@ -30,7 +30,7 @@
                                 <div class="col-md-6">
                                     <div class="home-card-block">
                                         <h4 class="card-title"><?php echo $home{1}->title; ?></h4>
-                                        <p class="card-text"><?php substr(html_entity_decode($home{1}->content), 0, 150) . "..."; ?></p>
+                                        <p class="card-text"><?php echo substr(html_entity_decode($home{1}->content), 0, 120) . "..."; ?></p>
                                         <a class="btn btn-light" id="home-card-button" href='?controller=post&action=read&id=<?php echo $home{1}->id; ?>'>Read More</a>
                                     </div>
                                 </div>
@@ -48,7 +48,7 @@
                                 <div class="col-md-6">
                                     <div class="home-card-block">
                                         <h4 class="card-title"><?php echo $home{2}->title; ?></h4>
-                                        <p class="card-text"><?php substr(html_entity_decode($home{2}->content), 0, 150) . "..."; ?></p>
+                                        <p class="card-text"><?php echo substr(html_entity_decode($home{2}->content), 0, 100) . "..."; ?></p>
                                         <a class="btn btn-light" id="home-card-button" href='?controller=post&action=read&id=<?php echo $home{2}->id; ?>'>Read More</a>
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
+            <div id="map" class="container">
                 <div class="row">
                     <div class="col text-left" id="mapContainer">
                         <?php echo file_get_contents('views/images/world.svg'); ?>
@@ -127,9 +127,9 @@
                             </div>
                             <a id="postid" class="text-uppercase d-inline-block font-weight-medium lts-2px ml-2 mb-2 text-center styled-link">
                                 Read More
-                            </a> <br>
+                            </a>
                             <a id="postContinent" class="text-uppercase d-inline-block font-weight-medium lts-2px ml-2 mb-2 text-center styled-link">
-                                Read other posts from this region
+<!--                                Read other posts from this region-->
                             </a> 
                         </div>
                     </div>
