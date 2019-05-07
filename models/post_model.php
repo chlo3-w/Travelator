@@ -196,6 +196,7 @@ class Post {
         return $list;
     }
     
+    
         public static function searchLocation($searchParam) {
             $list=[];
         $db = DB::getInstance();
@@ -204,7 +205,7 @@ class Post {
                             ON posts.location_id = location.ID 
                             INNER JOIN category 
                             ON posts.category_id = category.category_id
-        WHERE  CONCAT(city, country, continent) LIKE (?)");
+        WHERE  continent LIKE (?)");
         
         $stmt->execute(['%'.$searchParam.'%']);
         foreach ($stmt->fetchAll() as $post) {

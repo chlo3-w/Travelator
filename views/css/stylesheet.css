@@ -197,42 +197,10 @@ footer {
   background-color: rgba(247, 246, 243, 0.7);
   font-size: 25px;
 }
-/*.card img {
-
-max-width: 100%;
-  max-height: 250px;
-}*/
-
-/*.card-block img {
-      max-height: 250px; 
-}*/
-
-/*#worldMap {
-  fill: #f4c3c2 !important;
-}
-
-path:hover,
-circle:hover {
-  stroke: #002868 !important;
-  stroke-width: 2px;
-  stroke-linejoin: round;
-  fill: #002868 !important;
-  cursor: pointer;
-}*/
-#info-box {
-  display: none;
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  z-index: 1;
-  background-color: #ffffff;
-  border: 2px solid #bf0a30;
-  border-radius: 5px;
-  padding: 5px;
-  font-family: arial;
-}
 
 
+
+/*
 .home-categories {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -271,7 +239,7 @@ circle:hover {
 .home-cat-link {
   padding: 2px;
   background-color: rgba(247, 246, 243, 0.7);
-}
+}*/
 
 
 /*<-------HEAD------->*/
@@ -345,70 +313,6 @@ textarea{
     text-align: center;
 }
 /*
-
-=======
-
-
-#worldMap {
-    fill: #F4C3C2 !important;
-}
-
-path:hover, circle:hover {
-    stroke: #002868 !important;
-    stroke-width:2px;
-    stroke-linejoin: round;
-    fill: #002868 !important;
-    cursor: pointer;
-}
-#info-box {
-    display: none;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    z-index: 1;
-    background-color: #ffffff;
-    border: 2px solid #BF0A30;
-    border-radius: 5px;
-    padding: 5px;
-    font-family: arial;
-}
-
-/*
-.countries:hover {
-    fill:red;
-}*/
-
-
-
-/*
-#worldMap {
-    fill: #F4C3C2 !important;
-}
-
-path:hover, circle:hover {
-    stroke: #002868 !important;
-    stroke-width:2px;
-    stroke-linejoin: round;
-    fill: #002868 !important;
-    cursor: pointer;
-}*/
-#info-box {
-    display: none;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    z-index: 1;
-    background-color: #ffffff;
-    border: 2px solid #BF0A30;
-    border-radius: 5px;
-    padding: 5px;
-    font-family: arial;
-}
-
-/*
-.countries:hover {
-    fill:red;
-}*/
 
 
 /* --------------------
@@ -1157,32 +1061,28 @@ p, h1 {
 Map
 *********************************/
 
-.worldMap a{
-  fill: #D4D8D8; 
-/*  display: block;*/
-  align-items: center;
-  position: static;
-/*  z-index: 0;
-  top: 0;
-  left: 0;*/
-  width: 100%;
-  height: 100%;
-}
-.worldMap {
-    fill: #D4D8D8; 
+#worldMap {
+    fill: #D4D8D8;
+     width:600px;
 }
 
-.worldMap a:hover {
-    stroke: #a30d6f;
-    stroke-width:2px;
-    stroke-linejoin: round;
-    fill: #a30d6f;
-    cursor: pointer;
-}
-.mapContainer{
-    min-width: 100%;
+#mapContainer{
+    /*min-width: 100%;*/
     margin-left: auto;
     margin-right: auto;
+}
+
+path:hover {
+    display: hide;
+  stroke:  #a30d6f;
+  stroke-width:2px;
+  stroke-linejoin: round;
+  fill:  #a30d6f;
+  cursor: pointer;
+}
+
+#infoBoxContainer{
+	display:none;
 }
 
 

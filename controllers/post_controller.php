@@ -83,7 +83,7 @@ class PostController {
       require_once('views/pages/gallery.php');
       
     }
-        public function readLocation() {
+          public function readLocation() {
         if (!isset($_GET['location']))
             return call('pages', 'error');
         try {
