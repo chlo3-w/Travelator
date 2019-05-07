@@ -1,5 +1,5 @@
 
-<div class="comments-lines">
+<div class="comments-lines text-center">
     <br>
     <hr/>
     <h2> Comments </h2>

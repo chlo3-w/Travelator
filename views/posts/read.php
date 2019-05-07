@@ -21,7 +21,7 @@
         <?php
             $file = 'views/images/' . $post->city . '.jpeg';
             if (file_exists($file)) {
-                $img = "<img class='img-fluid text-center' src='$file' height='400px' width='auto' />";
+                $img = "<img style='display: block; margin-left: auto; margin-right: auto;' class='img-fluid text-center' src='$file' height='400px' width='auto' />";
                 echo $img;
             }
         ?>
@@ -58,7 +58,7 @@
                                     ON posts.location_id = location.ID 
                                     INNER JOIN category 
                                     ON posts.category_id = category.category_id
-                                    WHERE category ='$post->category'");
+                                    WHERE category ='$post->category' AND posts.id != $post->id");
                 $smt->execute();
                 $data = $smt->fetchAll();
                 foreach ($data as $related):

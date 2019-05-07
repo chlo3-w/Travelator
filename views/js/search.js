@@ -4,7 +4,7 @@ $(document).ready(function() {
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('title'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         remote: {
-            url: 'http://localhost/Travelator/api/search.php?query=%QUERY',
+            url: 'api/search.php?query=%QUERY',
             wildcard: '%QUERY'
         }
     });
@@ -15,6 +15,6 @@ $(document).ready(function() {
     });
     
     $('.typeahead').on('typeahead:selected', function (evt, item) {
-        window.location.href = 'http://localhost/Travelator/index.php?controller=post&action=read&id=' + item.id;
+        window.location.href = 'index.php?controller=post&action=read&id=' + item.id;
     });    
 });
