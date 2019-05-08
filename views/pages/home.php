@@ -30,7 +30,7 @@
                                 <div class="col-md-6">
                                     <div class="home-card-block">
                                         <h4 class="card-title"><?php echo $home{1}->title; ?></h4>
-                                        <p class="card-text"><?php echo substr(html_entity_decode($home{1}->content), 0, 120) . "..."; ?></p>
+                                        <p class="card-text"><?php echo substr(html_entity_decode($home{1}->content), 0, 150) . "..."; ?></p>
                                         <a class="btn btn-light" id="home-card-button" href='?controller=post&action=read&id=<?php echo $home{1}->id; ?>'>Read More</a>
                                     </div>
                                 </div>
@@ -48,7 +48,7 @@
                                 <div class="col-md-6">
                                     <div class="home-card-block">
                                         <h4 class="card-title"><?php echo $home{2}->title; ?></h4>
-                                        <p class="card-text"><?php echo substr(html_entity_decode($home{2}->content), 0, 100) . "..."; ?></p>
+                                        <p class="card-text"><?php echo substr(html_entity_decode($home{2}->content), 0, 150) . "..."; ?></p>
                                         <a class="btn btn-light" id="home-card-button" href='?controller=post&action=read&id=<?php echo $home{2}->id; ?>'>Read More</a>
                                     </div>
                                 </div>
