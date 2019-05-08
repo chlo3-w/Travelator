@@ -19,8 +19,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
- CREATE Database `TravelBlog`;
-    USE `TravelBlog`;
+CREATE DATABASE IF NOT EXISTS `TravelBlog` DEFAULT CHARACTER SET latin1 COLLATE latin1_general_ci;
+USE `TravelBlog`;
 
 -- --------------------------------------------------------
 
@@ -80,13 +80,14 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`ID`, `userID`, `postID`, `commentBody`, `createdAt`, `parentID`) VALUES
-(1, 1, 3, 'Great post!', '2019-04-25 17:53:54', NULL),
 (2, 2, 1, 'Sounds amazing, can\'t wait to visit!', '2019-04-25 17:54:26', NULL),
-(4, 1, 3, 'Another comment', '2019-04-25 17:55:16', NULL),
-(5, 2, 3, 'Another comment', '2019-04-25 17:55:58', NULL),
-(6, 3, 1, 'ANother comment', '2019-04-25 17:56:22', NULL),
-(8, 7, 1, 'me too! ', '2019-05-06 18:09:33', 2),
-(9, 7, 12, 'cool!', '2019-05-07 21:19:48', NULL);
+(3, 4, 1, 'I love this website!', '2019-05-06 13:55:04', NULL),
+(4, 10, 1, 'Thanks, really helpful post.', '2019-05-06 13:55:57', NULL),
+(5, 3, 1, 'Me too, might need to have a longer holiday though...', '2019-05-06 13:58:21', 2),
+(6, 11, 1, 'Yeah, I would never have thought to go to Ghent!', '2019-05-06 14:11:47', 2),
+(7, 7, 1, 'I spent a month travelling around Europe', '2019-05-06 14:13:05', 23),
+(8, 9, 1, 'Its definitely worth a visit, I went last year...', '2019-05-06 14:15:05', 24),
+(9, 2, 1, 'Me too, Travelator rocks!', '2019-05-06 14:15:57', 21);
 
 -- --------------------------------------------------------
 
@@ -176,10 +177,16 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `username`, `password`, `email`, `first_name`, `last_name`, `author`, `avatar`) VALUES
 (1, 'admin', 'admin1', 'admin@admin.com', 'admin', 'admin', 1, NULL),
-(2, 'Sasha', 'Travelator', 'sasha@travelator.com', 'Sasha', 'Massan', NULL, 'views/images/userProfiles/Sasha.jpeg'),
-(3, 'Sheila', 'Travelator', 'sheila@travelator.com', 'Sheila', 'Kerry', NULL, 'views/images/userProfiles/default.jpeg'),
-(4, 'Cheryl', 'Travelator', 'cheryl@travelator.com', 'Cheryl', 'Horrigan', NULL, 'views/images/userProfiles/default.jpeg'),
-(7, 'adminchloe', 'ae2b1fca515949e5d54fb22b8ed95575', 'chloe@travelator.com', 'chloe', 'williams', 1, 'views/images/userProfiles/Archie.jpeg');
+(2, 'Sasha', 'c278b51f4b96f950f20509032b47d23b', 'sasha@travelator.com', 'Sasha', 'Massan', NULL, 'views/images/userProfiles/Sasha.jpeg'),
+(3, 'Sheila', 'c278b51f4b96f950f20509032b47d23b', 'sheila@travelator.com', 'Sheila', 'Kerry', NULL, 'views/images/userProfiles/Sheila.jpeg'),
+(4, 'Cheryl', 'c278b51f4b96f950f20509032b47d23b', 'cheryl@travelator.com', 'Cheryl', 'Horrigan', NULL, 'views/images/userProfiles/default.jpeg'),
+(7, 'adminchloe', 'ae2b1fca515949e5d54fb22b8ed95575', 'chloe@travelator.com', 'Chloe', 'Williams', 1, 'views/images/userProfiles/Archie.jpeg'),
+(8, 'steve.williams', 'ae2b1fca515949e5d54fb22b8ed95575', 'steve.williams@gmail.com', 'steve', 'williams', NULL, 'views/images/userProfiles/default.jpeg'),
+(9, 'Marc', 'c278b51f4b96f950f20509032b47d23b', 'gloriphobia@gmail.com', 'Marc', 'Coury', NULL, 'views/images/userProfiles/default.jpeg'),
+(10, 'Rhian', 'c278b51f4b96f950f20509032b47d23b', 'rhian@travelator.com', 'Rhian', 'McNeff', NULL, 'views/images/userProfiles/Rhian.jpeg'),
+(11, 'Nikki', 'c278b51f4b96f950f20509032b47d23b', 'nikki@travelator.com', 'Nikolett', 'Trenyik', NULL, 'views/images/userProfiles/Nikki.jpeg');
+
+
 
 --
 -- Indexes for dumped tables

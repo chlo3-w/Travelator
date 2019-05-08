@@ -23,7 +23,7 @@
 
                 <form class="new-comment-form" method="post">
                     <input id="comment" type="text" class="new-comment-body" name="body" placeholder="New comment...">
-                    <input id="comment" type="submit" class="new-comment-submit" value="Submit">
+                    <input id="comment-submit" type="submit" class="new-comment-submit" value="Submit">
                 </form>
 
             </div>

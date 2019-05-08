@@ -1160,7 +1160,7 @@ path:hover {
 	      transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 .tt-menu {
-	min-width: 450px;
+	min-width: 400px;
 	margin-top: 2px;
 	padding: 5px 0;
 	background-color: #ffffff;

@@ -19,7 +19,7 @@ class Search {
         $db = DB::getInstance();
         $stmt = $db->prepare("SELECT posts.id, posts.title, location.city, location.continent FROM posts
         INNER JOIN location ON posts.location_id = location.ID
-    WHERE country LIKE (?)");
+        WHERE country LIKE (?)");
         
         $stmt->execute(['%'.$searchParam.'%']);
         $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);

@@ -11,7 +11,6 @@
     border-radius: 4px;
     box-shadow: inset 0 1px 3px #ddd;
     box-sizing: border-box;
-    
 }
 
 .allComments ul {
@@ -38,7 +37,7 @@
 }
 
 .comment-reply-btn {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     border: 2px solid #000;
     border-radius: 15px;
     border-color: darkgrey;
@@ -63,21 +62,21 @@
     text-align: left;
     font-family: Larish Neue;
     font-size: 18px;
+    padding-bottom: 10px;
 }
 
 .new-comment-body {
     font-family: Larish Neue;
-    
 }
 
-#comment input[type=submit] {
+#comment-submit{
     margin: 10px;
     border: 2px solid #000;
     border-radius: 15px;
     border-color: darkgray;
     font-size: 15px;
-    font-family: Georgia, serif; 
-    color: gray;
+    font-family: Georgia, serif;
+    color: darkgrey;
     padding-left: 20px;
     padding-right: 20px;
     float: right;
@@ -88,4 +87,12 @@
     letter-spacing: 3px;
     color: #0066cc;
     text-decoration: underline;
+}
+
+#comment-reply-form {
+    border: 1px solid #000;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px #ddd;
+    box-sizing: border-box;
+    padding-bottom: 15px;
 }
